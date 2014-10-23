@@ -1,0 +1,49 @@
+{
+  "name": "ember-test-utils",
+  "version": "1.0.0",
+  "description": "A utility module for testing ember apps.",
+  "keywords": [
+    "ember",
+    "utils",
+    "javascript"
+  ],
+  "author": {
+    "name": "Aditya Hegde",
+    "email": "adityahegderocks@gmail.com",
+    "url": "http://www.openshift.com/"
+  },
+  "homepage": "http://www.openshift.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdityaHegde/ember-test-utils"
+  },
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "express": "~3.4.4"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-concat" : "*",
+    "grunt-ember-templates" : "*",
+    "grunt-contrib-yuidoc": "*",
+    "grunt-concurrent": "*",
+    "load-grunt-config": "*",
+    "time-grunt": "*",
+    "yuidocjs": "*",
+    "karma-qunit": "*",
+    "karma-junit-reporter": "*",
+    "karma-coverage": "*",
+    "karma-ember-preprocessor": "*",
+    "karma-chrome-launcher": "*",
+    "karma-phantomjs-launcher": "*"
+  },
+  "bundleDependencies": [],
+  "scripts" : {
+    "test" : "./node_modules/karma/bin/karma start karma.conf.js"
+  }
+}

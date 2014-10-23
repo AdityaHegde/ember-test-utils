@@ -1,4 +1,6 @@
-ember-test-utils
-================
+ember-utils
+===========
 
-A utility module for testing ember apps.
+Utility modules for ember
+
+WIP

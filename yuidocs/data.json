@@ -1,0 +1,630 @@
+{
+    "project": {
+        "name": "Ember Test Utils",
+        "description": "A utility module for testing ember apps."
+    },
+    "files": {
+        "src/js/test-case-base.js": {
+            "name": "src/js/test-case-base.js",
+            "modules": {
+                "test-case": 1
+            },
+            "classes": {
+                "TestCase.TestSuit": 1,
+                "TestCase.EmberTestSuit": 1,
+                "TestCase.TestCase": 1,
+                "TestCase.TestBlock": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/js/test-case-operations.js": {
+            "name": "src/js/test-case-operations.js",
+            "modules": {
+                "test-case-operation": 1
+            },
+            "classes": {
+                "TestCase.TestOperation": 1,
+                "TestCase.TestValues": 1,
+                "TestCase.TestValueCheckObject": 1,
+                "TestCase.TestAssignValues": 1,
+                "TestCase.TestValueAssignObject": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/js/test-utils.js": {
+            "name": "src/js/test-utils.js",
+            "modules": {
+                "test-utils": 1
+            },
+            "classes": {
+                "TestUtils": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "test-case": {
+            "name": "test-case",
+            "submodules": {
+                "test-case-operation": 1
+            },
+            "classes": {
+                "TestCase.TestSuit": 1,
+                "TestCase.EmberTestSuit": 1,
+                "TestCase.TestCase": 1,
+                "TestCase.TestBlock": 1,
+                "TestCase.TestOperation": 1,
+                "TestCase.TestValues": 1,
+                "TestCase.TestValueCheckObject": 1,
+                "TestCase.TestAssignValues": 1,
+                "TestCase.TestValueAssignObject": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/js/test-case-operations.js",
+            "line": 134,
+            "description": "Test Case Helper module."
+        },
+        "test-case-operation": {
+            "name": "test-case-operation",
+            "submodules": {},
+            "classes": {
+                "TestCase.TestOperation": 1,
+                "TestCase.TestValues": 1,
+                "TestCase.TestValueCheckObject": 1,
+                "TestCase.TestAssignValues": 1,
+                "TestCase.TestValueAssignObject": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "test-case",
+            "namespace": "",
+            "file": "src/js/test-case-operations.js",
+            "line": 134,
+            "description": "Test Operations submodule."
+        },
+        "test-utils": {
+            "name": "test-utils",
+            "submodules": {},
+            "classes": {
+                "TestUtils": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/js/test-utils.js",
+            "line": 9,
+            "description": "Utility funcitons for testing."
+        }
+    },
+    "classes": {
+        "TestCase.TestSuit": {
+            "name": "TestCase.TestSuit",
+            "shortname": "TestCase.TestSuit",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "namespace": "",
+            "file": "src/js/test-case-base.js",
+            "line": 8,
+            "description": "A simple test case suit class."
+        },
+        "TestCase.EmberTestSuit": {
+            "name": "TestCase.EmberTestSuit",
+            "shortname": "TestCase.EmberTestSuit",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "namespace": "",
+            "file": "src/js/test-case-base.js",
+            "line": 48,
+            "description": "Test suit which call moduleFor* module initializer provided by ember-qunit."
+        },
+        "TestCase.TestCase": {
+            "name": "TestCase.TestCase",
+            "shortname": "TestCase.TestCase",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "namespace": "",
+            "file": "src/js/test-case-base.js",
+            "line": 76,
+            "description": "Test Case class."
+        },
+        "TestCase.TestBlock": {
+            "name": "TestCase.TestBlock",
+            "shortname": "TestCase.TestBlock",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "namespace": "",
+            "file": "src/js/test-case-base.js",
+            "line": 131,
+            "description": "Test Case Block. A block of operations run synchronously. They are preeceded by a wait() and enclosed in andThen()."
+        },
+        "TestCase.TestOperation": {
+            "name": "TestCase.TestOperation",
+            "shortname": "TestCase.TestOperation",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "submodule": "test-case-operation",
+            "namespace": "",
+            "file": "src/js/test-case-operations.js",
+            "line": 8,
+            "description": "Test Opertaion base class."
+        },
+        "TestCase.TestValues": {
+            "name": "TestCase.TestValues",
+            "shortname": "TestCase.TestValues",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "submodule": "test-case-operation",
+            "namespace": "",
+            "file": "src/js/test-case-operations.js",
+            "line": 18,
+            "description": "Test Operation to check a set of values."
+        },
+        "TestCase.TestValueCheckObject": {
+            "name": "TestCase.TestValueCheckObject",
+            "shortname": "TestCase.TestValueCheckObject",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "submodule": "test-case-operation",
+            "namespace": "",
+            "file": "src/js/test-case-operations.js",
+            "line": 54,
+            "description": "Object that has config for checking a value."
+        },
+        "TestCase.TestAssignValues": {
+            "name": "TestCase.TestAssignValues",
+            "shortname": "TestCase.TestAssignValues",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "submodule": "test-case-operation",
+            "namespace": "",
+            "file": "src/js/test-case-operations.js",
+            "line": 105,
+            "description": "Test Operation to check a set of values."
+        },
+        "TestCase.TestValueAssignObject": {
+            "name": "TestCase.TestValueAssignObject",
+            "shortname": "TestCase.TestValueAssignObject",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "submodule": "test-case-operation",
+            "namespace": "",
+            "file": "src/js/test-case-operations.js",
+            "line": 134,
+            "description": "Object that has config for checking a value."
+        },
+        "TestUtils": {
+            "name": "TestUtils",
+            "shortname": "TestUtils",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-utils",
+            "namespace": "",
+            "file": "src/js/test-utils.js",
+            "line": 9
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/js/test-case-base.js",
+            "line": 19,
+            "description": "Name of the test suit.",
+            "itemtype": "property",
+            "name": "suitName",
+            "type": "String",
+            "class": "TestCase.TestSuit",
+            "module": "test-case"
+        },
+        {
+            "file": "src/js/test-case-base.js",
+            "line": 27,
+            "description": "Options to be passed to the qunit module.",
+            "itemtype": "property",
+            "name": "moduleOpts",
+            "type": "Object",
+            "class": "TestCase.TestSuit",
+            "module": "test-case"
+        },
+        {
+            "file": "src/js/test-case-base.js",
+            "line": 35,
+            "description": "Array of test cases. Will be automatically be converted to TestCase classes based on \"testCase\" attribute.",
+            "itemtype": "property",
+            "name": "testCases",
+            "type": "Array",
+            "class": "TestCase.TestSuit",
+            "module": "test-case"
+        },
+        {
+            "file": "src/js/test-case-base.js",
+            "line": 54,
+            "description": "Module initializer function. Can have moduleFor, moduleForComponent or moduleForModel.",
+            "itemtype": "property",
+            "name": "moduleFunction",
+            "type": "String",
+            "default": "\"moduleFor\"",
+            "class": "TestCase.EmberTestSuit",
+            "module": "test-case"
+        },
+        {
+            "file": "src/js/test-case-base.js",
+            "line": 63,
+            "description": "The 1st param passed to moduleFunction.",
+            "itemtype": "property",
+            "name": "param",
+            "type": "String",
+            "class": "TestCase.EmberTestSuit",
+            "module": "test-case"
+        },
+        {
+            "file": "src/js/test-case-base.js",
+            "line": 91,
+            "description": "Title of the test case.",
+            "itemtype": "property",
+            "name": "title",
+            "type": "String",
+            "class": "TestCase.TestCase",
+            "module": "test-case"
+        },
+        {
+            "file": "src/js/test-case-base.js",
+            "line": 99,
+            "description": "Object of data to be shared within test case.",
+            "itemtype": "property",
+            "name": "testData",
+            "type": "Object",
+            "class": "TestCase.TestCase",
+            "module": "test-case"
+        },
+        {
+            "file": "src/js/test-case-base.js",
+            "line": 107,
+            "description": "Array of test blocks. Will be automatically be converted to TestBlock classes based on \"block\" attribute.",
+            "itemtype": "property",
+            "name": "testBlocks",
+            "type": "Array",
+            "class": "TestCase.TestCase",
+            "module": "test-case"
+        },
+        {
+            "file": "src/js/test-case-operations.js",
+            "line": 60,
+            "description": "Path of the value to check. Can have indices also!",
+            "itemtype": "property",
+            "name": "path",
+            "type": "String",
+            "class": "TestCase.TestValueCheckObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
+        },
+        {
+            "file": "src/js/test-case-operations.js",
+            "line": 68,
+            "description": "Value to check against.",
+            "itemtype": "property",
+            "name": "value",
+            "type": "Number|Boolean|String|Object",
+            "class": "TestCase.TestValueCheckObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
+        },
+        {
+            "file": "src/js/test-case-operations.js",
+            "line": 76,
+            "description": "Path to get value from.",
+            "itemtype": "property",
+            "name": "value",
+            "type": "String",
+            "class": "TestCase.TestValueCheckObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
+        },
+        {
+            "file": "src/js/test-case-operations.js",
+            "line": 84,
+            "description": "Message to show when the assertion passes.",
+            "itemtype": "property",
+            "name": "message",
+            "type": "String",
+            "class": "TestCase.TestValueCheckObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
+        },
+        {
+            "file": "src/js/test-case-operations.js",
+            "line": 140,
+            "description": "Path of the value to assign to. Can have indices also!",
+            "itemtype": "property",
+            "name": "path",
+            "type": "String",
+            "class": "TestCase.TestValueAssignObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
+        },
+        {
+            "file": "src/js/test-case-operations.js",
+            "line": 148,
+            "description": "Path within value gotten by path to assign to.",
+            "itemtype": "property",
+            "name": "putPath",
+            "type": "String",
+            "class": "TestCase.TestValueAssignObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
+        },
+        {
+            "file": "src/js/test-case-operations.js",
+            "line": 156,
+            "description": "Value to assign.",
+            "itemtype": "property",
+            "name": "value",
+            "type": "Number|Boolean|String|Object",
+            "class": "TestCase.TestValueAssignObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
+        },
+        {
+            "file": "src/js/test-case-operations.js",
+            "line": 164,
+            "description": "Path to get value from.",
+            "itemtype": "property",
+            "name": "value",
+            "type": "String",
+            "class": "TestCase.TestValueAssignObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
+        },
+        {
+            "file": "src/js/test-case-operations.js",
+            "line": 172,
+            "description": "Param used in various operations. \nFor array operations, 0th element is operation, 1st element is additional param to operation.",
+            "itemtype": "property",
+            "name": "params",
+            "type": "Array",
+            "class": "TestCase.TestValueAssignObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
+        },
+        {
+            "file": "src/js/test-utils.js",
+            "line": 13,
+            "description": "Check a list of elements in an array.",
+            "itemtype": "method",
+            "name": "TestUtils.checkElements",
+            "static": 1,
+            "params": [
+                {
+                    "name": "array",
+                    "description": "The array to check in.",
+                    "type": "Array"
+                },
+                {
+                    "name": "path",
+                    "description": "The path in array to compare to.",
+                    "type": "String"
+                },
+                {
+                    "name": "expected",
+                    "description": "The array of expected values to be present in array.",
+                    "type": "Array"
+                },
+                {
+                    "name": "exactCheck",
+                    "description": "Checks the exact position of elements in expected in array if true.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "class": "TestUtils",
+            "module": "test-utils"
+        },
+        {
+            "file": "src/js/test-utils.js",
+            "line": 37,
+            "description": "Get current date with offset.",
+            "itemtype": "method",
+            "name": "TestUtils.getCurDate",
+            "static": 1,
+            "params": [
+                {
+                    "name": "offset",
+                    "description": "Offset from current date. Can be negative.",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Returns local date + time.",
+                "type": "Date"
+            },
+            "class": "TestUtils",
+            "module": "test-utils"
+        },
+        {
+            "file": "src/js/test-utils.js",
+            "line": 53,
+            "description": "Checks a set of attributes in an ember object.",
+            "itemtype": "method",
+            "name": "TestUtils.hasAttrs",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Ember object to check in.",
+                    "type": "Class"
+                },
+                {
+                    "name": "attrs",
+                    "description": "An object with key values pairs to check in obj.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Returns true if obj has attrs else false.",
+                "type": "Boolean"
+            },
+            "class": "TestUtils",
+            "module": "test-utils"
+        },
+        {
+            "file": "src/js/test-utils.js",
+            "line": 73,
+            "description": "Setups up a store within a container and returns it.",
+            "itemtype": "method",
+            "name": "TestUtils.setupStore",
+            "static": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "Container to setup the store within.",
+                    "type": "Class"
+                }
+            ],
+            "return": {
+                "description": "Created store.",
+                "type": "Class"
+            },
+            "class": "TestUtils",
+            "module": "test-utils"
+        },
+        {
+            "file": "src/js/test-utils.js",
+            "line": 94,
+            "description": "Setup app to start emmiting events without passing advance readinies to save time. Also registers a few views missing by default (bug?).",
+            "itemtype": "method",
+            "name": "TestUtils.setupAppForTesting",
+            "static": 1,
+            "params": [
+                {
+                    "name": "app",
+                    "description": "App object.",
+                    "type": "Class"
+                },
+                {
+                    "name": "container",
+                    "description": "Container object.",
+                    "type": "Class"
+                }
+            ],
+            "class": "TestUtils",
+            "module": "test-utils"
+        },
+        {
+            "file": "src/js/test-utils.js",
+            "line": 111,
+            "description": "Advanced getter with a few extra features.\nUse .i. to get into indiex i.\nUse [a=b] to run findBy(a, b).",
+            "itemtype": "method",
+            "name": "TestUtils.getter",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Object to get from.",
+                    "type": "Class"
+                },
+                {
+                    "name": "path",
+                    "description": "Path to get from.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns an array with [value, lastObj extracted, last part of path]",
+                "type": "Array"
+            },
+            "class": "TestUtils",
+            "module": "test-utils"
+        },
+        {
+            "file": "src/js/test-utils.js",
+            "line": 162,
+            "description": "Advanced setter with call to TestUtils.getter",
+            "itemtype": "method",
+            "name": "TestUtils.setter",
+            "static": 1,
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "Object to put to.",
+                    "type": "Class"
+                },
+                {
+                    "name": "path",
+                    "description": "Path to object at the last part. If the last object is array, array modification is fired.",
+                    "type": "String"
+                },
+                {
+                    "name": "putPath",
+                    "description": "Path to put to at the object at last part. In case of array modification like push putPath will be an array with 0th element as the operation (allowed - push, pop, unshift, shift, remove, insertAt, removeAt) and 1st element as the index.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "Value to put.",
+                    "type": "Any"
+                }
+            ],
+            "class": "TestUtils",
+            "module": "test-utils"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/test-utils.js:37"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/test-utils.js:53"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/test-utils.js:73"
+        }
+    ]
+}

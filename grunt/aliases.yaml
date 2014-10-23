@@ -1,0 +1,8 @@
+default:
+  - 'concat:dist'
+  - 'uglify'
+  - 'yuidoc'
+
+build_test:
+  - 'concat:dist'
+  - 'concat:test'
