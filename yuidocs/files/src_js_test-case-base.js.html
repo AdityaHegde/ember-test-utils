@@ -41,7 +41,13 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/MockjaxUtils.MockjaxData.html">MockjaxUtils.MockjaxData</a></li>
+            
+                <li><a href="../classes/MockjaxUtils.MockjaxSettings.html">MockjaxUtils.MockjaxSettings</a></li>
+            
                 <li><a href="../classes/TestCase.EmberTestSuit.html">TestCase.EmberTestSuit</a></li>
+            
+                <li><a href="../classes/TestCase.SetupStore.html">TestCase.SetupStore</a></li>
             
                 <li><a href="../classes/TestCase.TestAssignValues.html">TestCase.TestAssignValues</a></li>
             
@@ -64,6 +70,8 @@
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/mockjax-utils.html">mockjax-utils</a></li>
             
                 <li><a href="../modules/test-case.html">test-case</a></li>
             
@@ -126,6 +134,12 @@ TestCase.TestSuit = Ember.Object.extend({
   init : function() {
     this._super();
     this.modularize();
+    var testCases = this.get(&quot;testCases&quot;);
+    if(testCases) {
+      for(var i = 0; i &lt; testCases.length; i++) {
+        testCases[i].register();
+      }
+    }
   },
 
   /**
@@ -191,8 +205,7 @@ TestCase.EmberTestSuit = TestCase.TestSuit.extend({
  * @class TestCase.TestCase
  */
 TestCase.TestCase = Ember.Object.extend({
-  init : function() {
-    this._super();
+  register : function() {
     var testCase = this;
     test(this.get(&quot;title&quot;), function() {
       testCase.set(&quot;testData.testContext&quot;, this);

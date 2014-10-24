@@ -1,7 +1,10 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
+        "MockjaxUtils.MockjaxData",
+        "MockjaxUtils.MockjaxSettings",
         "TestCase.EmberTestSuit",
+        "TestCase.SetupStore",
         "TestCase.TestAssignValues",
         "TestCase.TestBlock",
         "TestCase.TestCase",
@@ -13,11 +16,17 @@ YUI.add("yuidoc-meta", function(Y) {
         "TestUtils"
     ],
     "modules": [
+        "mockjax-utils",
         "test-case",
         "test-case-operation",
         "test-utils"
     ],
     "allModules": [
+        {
+            "displayName": "mockjax-utils",
+            "name": "mockjax-utils",
+            "description": "Wrapper to mock ajax request from CrudAdaptor module."
+        },
         {
             "displayName": "test-case",
             "name": "test-case",

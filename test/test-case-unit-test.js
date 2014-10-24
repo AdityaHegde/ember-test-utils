@@ -14,6 +14,7 @@ test("Sanity Test", function() {
       type : "baseBlock",
     }],
   });
+  testCase.register();
 
   equal(returnedTestTitle, "Test");
 
@@ -58,6 +59,7 @@ test("New Class with inherited from TestCase", function() {
       type : "testBl",
     }],
   });
+  testCase.register();
 
   equal(returnedTestTitle, "Test");
 

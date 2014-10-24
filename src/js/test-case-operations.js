@@ -32,10 +32,10 @@ TestCase.TestValuesCheck = Ember.Object.extend({
                     values[i].get("value"),
           getValue = TestUtils.getter(testData, path);
       if(Ember.typeOf(value) === "object") {
-        TestUtils.ok(hasAttrs(getValue[0], value), values[i].get("message"));
+        TestUtils.ok(TestUtils.hasAttrs(getValue[0], value), values[i].get("message"));
       }
       else if(Ember.typeOf(value) === "array") {
-        TestUtils.checkElements(getValue[1], getValue[2], values);
+        TestUtils.checkElements(getValue[1], getValue[2], value);
       }
       else {
         TestUtils.equal(getValue[0], value, values[i].get("message"));
@@ -118,7 +118,7 @@ TestCase.TestAssignValues = Ember.Object.extend({
           value = values[i].get("valuePath") ? 
                     TestUtils.getter(testData, values[i].get("valuePath"))[0] :
                     values[i].get("value");
-      TestUtils.setter(testData, path, putPath, value);
+      TestUtils.setter(testData, path, putPath, value, values[i].get("param"));
     }
   },
 
@@ -190,6 +190,33 @@ TestCase.TestValueAssignHierarchy = [
 ];
 Utils.registerHierarchy(TestCase.TestValueAssignHierarchy);
 
+
+/**
+ * Test Operation to setup ember data store.
+ *
+ * @class TestCase.SetupStore
+ */
+TestCase.SetupStore = Ember.Object.extend({
+  run : function(testData) {
+    var testContext = testData.get("testContext"),
+        container = testContext.get("container");
+    if(testContext.store) {
+      container.register('store:main', testContext.store());
+    }
+    else if (DS._setupContainer) {
+      DS._setupContainer(container);
+    }
+    else {
+      container.register('store:main', DS.Store);
+    }
+
+    container.register('adapter:application', CrudAdapter.ApplicationAdapter);
+    container.register('serializer:application', CrudAdapter.ApplicationSerializer);
+
+    testData.set("store", container.lookup('store:main'));
+  },
+});
+
 TestCase.TestHierarchyMap = [
   {
     classes : {
@@ -204,7 +231,7 @@ TestCase.TestHierarchyMap = [
       "baseTestBlock" : TestCase.TestBlock,
     },
     base : "baseTestBlock",
-    keysInArray : ["type", "attr1", "attr2", "attr3"],
+    keysInArray : ["type", "testOperations", "attr1", "attr2", "attr3"],
     childrenKey : "testOperations",
   },
   {
@@ -212,6 +239,7 @@ TestCase.TestHierarchyMap = [
       "baseOperation" : TestCase.TestOperation,
       "checkValues" : TestCase.TestValuesCheck,
       "assignValues" : TestCase.TestAssignValues,
+      "setupStore" : TestCase.SetupStore,
     },
     base : "baseOperation",
     keysInArray : ["type", "attr1", "attr2", "attr3"],

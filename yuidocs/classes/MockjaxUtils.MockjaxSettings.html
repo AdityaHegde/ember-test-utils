@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TestCase.TestCase - Ember Test Utils</title>
+    <title>MockjaxUtils.MockjaxSettings - Ember Test Utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -114,7 +114,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>TestCase.TestCase Class</h1>
+                        <h1>MockjaxUtils.MockjaxSettings Class</h1>
 <div class="box meta">
     
 
@@ -122,13 +122,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_js_test-case-base.js.html#l82"><code>src&#x2F;js&#x2F;test-case-base.js:82</code></a>
+            Defined in: <a href="../files/src_js_test-mockapis-wrapper.js.html#l8"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:8</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/test-case.html">test-case</a>
+            Module: <a href="../modules/mockjax-utils.html">mockjax-utils</a>
         
     
 
@@ -138,7 +138,7 @@
 
 
 <div class="box intro">
-    <p>Test Case class.</p>
+    <p>Mockjax settings class.</p>
 
 </div>
 
@@ -169,21 +169,49 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_testBlocks">testBlocks</a>
+                                <a href="#property_lastPassedData">lastPassedData</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_testData">testData</a>
+                                <a href="#property_logging">logging</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_title">title</a>
+                                <a href="#property_modelChangeMap">modelChangeMap</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_responseTime">responseTime</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_serverErrorCode">serverErrorCode</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_throwProcessError">throwProcessError</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_throwServerError">throwServerError</a>
 
                                 
                                 
@@ -205,9 +233,9 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_testBlocks" class="property item">
-    <h3 class="name"><code>testBlocks</code></h3>
-    <span class="type">Array</span>
+                    <div id="property_lastPassedData" class="property item">
+    <h3 class="name"><code>lastPassedData</code></h3>
+    <span class="type">Class</span>
 
     
 
@@ -228,7 +256,7 @@
             
         
         
-        <a href="../files/src_js_test-case-base.js.html#l112"><code>src&#x2F;js&#x2F;test-case-base.js:112</code></a>
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l49"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:49</code></a>
         
         </p>
 
@@ -238,7 +266,7 @@
     </div>
 
     <div class="description">
-        <p>Array of test blocks. Will be automatically be converted to TestBlock classes based on &quot;block&quot; attribute.</p>
+        <p>An object which contains data used in the last call. Has &#39;model&#39;, &#39;type&#39; and &#39;params&#39; from last call.</p>
 
     </div>
 
@@ -250,8 +278,55 @@
 </div>
 
                 
-                    <div id="property_testData" class="property item">
-    <h3 class="name"><code>testData</code></h3>
+                    <div id="property_logging" class="property item">
+    <h3 class="name"><code>logging</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l71"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:71</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If set to true, every call will be logged. This is a jquerymockjax setting.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_modelChangeMap" class="property item">
+    <h3 class="name"><code>modelChangeMap</code></h3>
     <span class="type">Object</span>
 
     
@@ -273,7 +348,7 @@
             
         
         
-        <a href="../files/src_js_test-case-base.js.html#l104"><code>src&#x2F;js&#x2F;test-case-base.js:104</code></a>
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l41"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:41</code></a>
         
         </p>
 
@@ -283,7 +358,7 @@
     </div>
 
     <div class="description">
-        <p>Object of data to be shared within test case.</p>
+        <p>A map to change the model settings used for the call.</p>
 
     </div>
 
@@ -295,9 +370,9 @@
 </div>
 
                 
-                    <div id="property_title" class="property item">
-    <h3 class="name"><code>title</code></h3>
-    <span class="type">String</span>
+                    <div id="property_responseTime" class="property item">
+    <h3 class="name"><code>responseTime</code></h3>
+    <span class="type">Number</span>
 
     
 
@@ -318,7 +393,7 @@
             
         
         
-        <a href="../files/src_js_test-case-base.js.html#l96"><code>src&#x2F;js&#x2F;test-case-base.js:96</code></a>
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l58"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:58</code></a>
         
         </p>
 
@@ -328,10 +403,153 @@
     </div>
 
     <div class="description">
-        <p>Title of the test case.</p>
+        <p>Response time to use. This is a jquerymockjax setting.</p>
 
     </div>
 
+    
+        <p><strong>Default:</strong> 50</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_serverErrorCode" class="property item">
+    <h3 class="name"><code>serverErrorCode</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l23"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:23</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Server error code to throw when &#39;throwServerError&#39; is set to true.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 500</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_throwProcessError" class="property item">
+    <h3 class="name"><code>throwProcessError</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l32"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:32</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Setting to 1 is equivalent to throwing a error by server in processing request.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 0</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_throwServerError" class="property item">
+    <h3 class="name"><code>throwServerError</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l14"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:14</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If set to true, all calls will throw server error with error code &#39;serverErrorCode&#39;.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
     
 
     

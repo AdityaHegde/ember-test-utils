@@ -14,6 +14,12 @@ TestCase.TestSuit = Ember.Object.extend({
   init : function() {
     this._super();
     this.modularize();
+    var testCases = this.get("testCases");
+    if(testCases) {
+      for(var i = 0; i < testCases.length; i++) {
+        testCases[i].register();
+      }
+    }
   },
 
   /**
@@ -79,8 +85,7 @@ TestCase.EmberTestSuit = TestCase.TestSuit.extend({
  * @class TestCase.TestCase
  */
 TestCase.TestCase = Ember.Object.extend({
-  init : function() {
-    this._super();
+  register : function() {
     var testCase = this;
     test(this.get("title"), function() {
       testCase.set("testData.testContext", this);

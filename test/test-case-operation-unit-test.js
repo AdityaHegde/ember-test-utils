@@ -35,6 +35,7 @@ test("Values check operation", function() {
       ]],
     ],
   });
+  testCase.register();
 
   returnedTestFun();
 
@@ -75,6 +76,7 @@ test("Assign values operation", function() {
       ]],
     ],
   });
+  testCase.register();
 
   returnedTestFun();
 

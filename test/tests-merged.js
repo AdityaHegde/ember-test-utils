@@ -106,42 +106,42 @@ test("array modifiers", function() {
   });
 
   Ember.run(function() {
-    TestUtils.setter(obj, "vara", ["pop"]);
+    TestUtils.setter(obj, "vara", "", "", ["pop"]);
   });
   equal(obj.get("vara.length"), 2);
 
   Ember.run(function() {
-    TestUtils.setter(obj, "vara", ["push"], "d");
+    TestUtils.setter(obj, "vara", "", "d", ["push"]);
   });
   equal(TestUtils.getter(obj, "vara.2")[0], "d");
   equal(obj.get("vara.length"), 3);
 
   Ember.run(function() {
-    TestUtils.setter(obj, "vara", ["unshift"], "e");
+    TestUtils.setter(obj, "vara", "", "e", ["unshift"]);
   });
   equal(TestUtils.getter(obj, "vara.0")[0], "e");
   equal(obj.get("vara.length"), 4);
 
   Ember.run(function() {
-    TestUtils.setter(obj, "vara", ["shift"]);
+    TestUtils.setter(obj, "vara", "", "", ["shift"]);
   });
   equal(TestUtils.getter(obj, "vara.0")[0], "a");
   equal(obj.get("vara.length"), 3);
 
   Ember.run(function() {
-    TestUtils.setter(obj, "vara", ["remove"], "b");
+    TestUtils.setter(obj, "vara", "", "b", ["remove"]);
   });
   equal(TestUtils.getter(obj, "vara.1")[0], "d");
   equal(obj.get("vara.length"), 2);
 
   Ember.run(function() {
-    TestUtils.setter(obj, "vara", ["insertAt", 1], "b");
+    TestUtils.setter(obj, "vara", "", "b", ["insertAt", 1]);
   });
   equal(TestUtils.getter(obj, "vara.1")[0], "b");
   equal(obj.get("vara.length"), 3);
 
   Ember.run(function() {
-    TestUtils.setter(obj, "vara", ["removeAt", 1]);
+    TestUtils.setter(obj, "vara", "", "", ["removeAt", 1]);
   });
   equal(TestUtils.getter(obj, "vara.0")[0], "a");
   equal(obj.get("vara.length"), 2);
@@ -212,6 +212,7 @@ test("Sanity Test", function() {
       type : "baseBlock",
     }],
   });
+  testCase.register();
 
   equal(returnedTestTitle, "Test");
 
@@ -256,6 +257,7 @@ test("New Class with inherited from TestCase", function() {
       type : "testBl",
     }],
   });
+  testCase.register();
 
   equal(returnedTestTitle, "Test");
 
@@ -308,6 +310,7 @@ test("Values check operation", function() {
       ]],
     ],
   });
+  testCase.register();
 
   returnedTestFun();
 
@@ -348,6 +351,7 @@ test("Assign values operation", function() {
       ]],
     ],
   });
+  testCase.register();
 
   returnedTestFun();
 

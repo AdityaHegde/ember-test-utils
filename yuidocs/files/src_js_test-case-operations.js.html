@@ -41,7 +41,13 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/MockjaxUtils.MockjaxData.html">MockjaxUtils.MockjaxData</a></li>
+            
+                <li><a href="../classes/MockjaxUtils.MockjaxSettings.html">MockjaxUtils.MockjaxSettings</a></li>
+            
                 <li><a href="../classes/TestCase.EmberTestSuit.html">TestCase.EmberTestSuit</a></li>
+            
+                <li><a href="../classes/TestCase.SetupStore.html">TestCase.SetupStore</a></li>
             
                 <li><a href="../classes/TestCase.TestAssignValues.html">TestCase.TestAssignValues</a></li>
             
@@ -64,6 +70,8 @@
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/mockjax-utils.html">mockjax-utils</a></li>
             
                 <li><a href="../modules/test-case.html">test-case</a></li>
             
@@ -144,10 +152,10 @@ TestCase.TestValuesCheck = Ember.Object.extend({
                     values[i].get(&quot;value&quot;),
           getValue = TestUtils.getter(testData, path);
       if(Ember.typeOf(value) === &quot;object&quot;) {
-        TestUtils.ok(hasAttrs(getValue[0], value), values[i].get(&quot;message&quot;));
+        TestUtils.ok(TestUtils.hasAttrs(getValue[0], value), values[i].get(&quot;message&quot;));
       }
       else if(Ember.typeOf(value) === &quot;array&quot;) {
-        TestUtils.checkElements(getValue[1], getValue[2], values);
+        TestUtils.checkElements(getValue[1], getValue[2], value);
       }
       else {
         TestUtils.equal(getValue[0], value, values[i].get(&quot;message&quot;));
@@ -230,7 +238,7 @@ TestCase.TestAssignValues = Ember.Object.extend({
           value = values[i].get(&quot;valuePath&quot;) ? 
                     TestUtils.getter(testData, values[i].get(&quot;valuePath&quot;))[0] :
                     values[i].get(&quot;value&quot;);
-      TestUtils.setter(testData, path, putPath, value);
+      TestUtils.setter(testData, path, putPath, value, values[i].get(&quot;param&quot;));
     }
   },
 
@@ -302,6 +310,33 @@ TestCase.TestValueAssignHierarchy = [
 ];
 Utils.registerHierarchy(TestCase.TestValueAssignHierarchy);
 
+
+/**
+ * Test Operation to setup ember data store.
+ *
+ * @class TestCase.SetupStore
+ */
+TestCase.SetupStore = Ember.Object.extend({
+  run : function(testData) {
+    var testContext = testData.get(&quot;testContext&quot;),
+        container = testContext.get(&quot;container&quot;);
+    if(testContext.store) {
+      container.register(&#x27;store:main&#x27;, testContext.store());
+    }
+    else if (DS._setupContainer) {
+      DS._setupContainer(container);
+    }
+    else {
+      container.register(&#x27;store:main&#x27;, DS.Store);
+    }
+
+    container.register(&#x27;adapter:application&#x27;, CrudAdapter.ApplicationAdapter);
+    container.register(&#x27;serializer:application&#x27;, CrudAdapter.ApplicationSerializer);
+
+    testData.set(&quot;store&quot;, container.lookup(&#x27;store:main&#x27;));
+  },
+});
+
 TestCase.TestHierarchyMap = [
   {
     classes : {
@@ -316,7 +351,7 @@ TestCase.TestHierarchyMap = [
       &quot;baseTestBlock&quot; : TestCase.TestBlock,
     },
     base : &quot;baseTestBlock&quot;,
-    keysInArray : [&quot;type&quot;, &quot;attr1&quot;, &quot;attr2&quot;, &quot;attr3&quot;],
+    keysInArray : [&quot;type&quot;, &quot;testOperations&quot;, &quot;attr1&quot;, &quot;attr2&quot;, &quot;attr3&quot;],
     childrenKey : &quot;testOperations&quot;,
   },
   {
@@ -324,6 +359,7 @@ TestCase.TestHierarchyMap = [
       &quot;baseOperation&quot; : TestCase.TestOperation,
       &quot;checkValues&quot; : TestCase.TestValuesCheck,
       &quot;assignValues&quot; : TestCase.TestAssignValues,
+      &quot;setupStore&quot; : TestCase.SetupStore,
     },
     base : &quot;baseOperation&quot;,
     keysInArray : [&quot;type&quot;, &quot;attr1&quot;, &quot;attr2&quot;, &quot;attr3&quot;],

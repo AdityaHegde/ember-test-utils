@@ -41,7 +41,13 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/MockjaxUtils.MockjaxData.html">MockjaxUtils.MockjaxData</a></li>
+            
+                <li><a href="../classes/MockjaxUtils.MockjaxSettings.html">MockjaxUtils.MockjaxSettings</a></li>
+            
                 <li><a href="../classes/TestCase.EmberTestSuit.html">TestCase.EmberTestSuit</a></li>
+            
+                <li><a href="../classes/TestCase.SetupStore.html">TestCase.SetupStore</a></li>
             
                 <li><a href="../classes/TestCase.TestAssignValues.html">TestCase.TestAssignValues</a></li>
             
@@ -64,6 +70,8 @@
             </ul>
 
             <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/mockjax-utils.html">mockjax-utils</a></li>
             
                 <li><a href="../modules/test-case.html">test-case</a></li>
             
@@ -183,27 +191,6 @@ TestUtils.hasAttrs = function(obj, attrs) {
 }
 
 /**
- * Setups up a store within a container and returns it.
- *
- * @method TestUtils.setupStore
- * @static
- * @param {Class} container Container to setup the store within.
- * @returns {Class} Created store.
- */
-TestUtils.setupStore = function(container) {
-  if (DS._setupContainer) {
-    DS._setupContainer(container);
-  } else {
-    container.register(&#x27;store:main&#x27;, DS.Store);
-  }
-
-  container.register(&#x27;adapter:application&#x27;, CrudAdapter.ApplicationAdapter);
-  container.register(&#x27;serializer:application&#x27;, CrudAdapter.ApplicationSerializer);
-
-  return container.lookup(&#x27;store:main&#x27;);
-}
-
-/**
  * Setup app to start emmiting events without passing advance readinies to save time. Also registers a few views missing by default (bug?).
  *
  * @method TestUtils.setupAppForTesting
@@ -281,11 +268,11 @@ TestUtils.getter = function(obj, path) {
  * @param {String} putPath Path to put to at the object at last part. In case of array modification like push putPath will be an array with 0th element as the operation (allowed - push, pop, unshift, shift, remove, insertAt, removeAt) and 1st element as the index.
  * @param {any} value Value to put.
  */
-TestUtils.setter = function(obj, path, putPath, value) {
+TestUtils.setter = function(obj, path, putPath, value, param) {
   var getVal = TestUtils.getter(obj, path);
   if(getVal &amp;&amp; getVal[0]) {
     if(Ember.typeOf(getVal[0]) === &quot;array&quot; || Ember.typeOf(getVal[0].get(&quot;length&quot;)) === &quot;number&quot;) {
-      switch(putPath[0]) {
+      switch(param[0]) {
         case &quot;push&quot; :
           getVal[0].pushObject(value);
           break;
@@ -307,11 +294,11 @@ TestUtils.setter = function(obj, path, putPath, value) {
           break;
 
         case &quot;insertAt&quot; :
-          getVal[0].insertAt(putPath[1], value);
+          getVal[0].insertAt(param[1], value);
           break;
 
         case &quot;removeAt&quot; :
-          getVal[0].removeAt(putPath[1]);
+          getVal[0].removeAt(param[1]);
           break;
 
         default: break;

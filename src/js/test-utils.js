@@ -71,27 +71,6 @@ TestUtils.hasAttrs = function(obj, attrs) {
 }
 
 /**
- * Setups up a store within a container and returns it.
- *
- * @method TestUtils.setupStore
- * @static
- * @param {Class} container Container to setup the store within.
- * @returns {Class} Created store.
- */
-TestUtils.setupStore = function(container) {
-  if (DS._setupContainer) {
-    DS._setupContainer(container);
-  } else {
-    container.register('store:main', DS.Store);
-  }
-
-  container.register('adapter:application', CrudAdapter.ApplicationAdapter);
-  container.register('serializer:application', CrudAdapter.ApplicationSerializer);
-
-  return container.lookup('store:main');
-}
-
-/**
  * Setup app to start emmiting events without passing advance readinies to save time. Also registers a few views missing by default (bug?).
  *
  * @method TestUtils.setupAppForTesting
@@ -169,11 +148,11 @@ TestUtils.getter = function(obj, path) {
  * @param {String} putPath Path to put to at the object at last part. In case of array modification like push putPath will be an array with 0th element as the operation (allowed - push, pop, unshift, shift, remove, insertAt, removeAt) and 1st element as the index.
  * @param {any} value Value to put.
  */
-TestUtils.setter = function(obj, path, putPath, value) {
+TestUtils.setter = function(obj, path, putPath, value, param) {
   var getVal = TestUtils.getter(obj, path);
   if(getVal && getVal[0]) {
     if(Ember.typeOf(getVal[0]) === "array" || Ember.typeOf(getVal[0].get("length")) === "number") {
-      switch(putPath[0]) {
+      switch(param[0]) {
         case "push" :
           getVal[0].pushObject(value);
           break;
@@ -195,11 +174,11 @@ TestUtils.setter = function(obj, path, putPath, value) {
           break;
 
         case "insertAt" :
-          getVal[0].insertAt(putPath[1], value);
+          getVal[0].insertAt(param[1], value);
           break;
 
         case "removeAt" :
-          getVal[0].removeAt(putPath[1]);
+          getVal[0].removeAt(param[1]);
           break;
 
         default: break;

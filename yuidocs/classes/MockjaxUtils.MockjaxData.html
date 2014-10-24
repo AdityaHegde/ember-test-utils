@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TestCase.TestCase - Ember Test Utils</title>
+    <title>MockjaxUtils.MockjaxData - Ember Test Utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -114,7 +114,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>TestCase.TestCase Class</h1>
+                        <h1>MockjaxUtils.MockjaxData Class</h1>
 <div class="box meta">
     
 
@@ -122,13 +122,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_js_test-case-base.js.html#l82"><code>src&#x2F;js&#x2F;test-case-base.js:82</code></a>
+            Defined in: <a href="../files/src_js_test-mockapis-wrapper.js.html#l86"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:86</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/test-case.html">test-case</a>
+            Module: <a href="../modules/mockjax-utils.html">mockjax-utils</a>
         
     
 
@@ -138,7 +138,7 @@
 
 
 <div class="box intro">
-    <p>Test Case class.</p>
+    <p>Model data used to process a call to the model.</p>
 
 </div>
 
@@ -169,21 +169,42 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_testBlocks">testBlocks</a>
+                                <a href="#property_data">data</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_testData">testData</a>
+                                <a href="#property_getAdditionalData">getAdditionalData</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_title">title</a>
+                                <a href="#property_getAdditionalData">getAdditionalData</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_getAdditionalData">getAdditionalData</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_modelClass">modelClass</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_name">name</a>
 
                                 
                                 
@@ -205,8 +226,8 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_testBlocks" class="property item">
-    <h3 class="name"><code>testBlocks</code></h3>
+                    <div id="property_data" class="property item">
+    <h3 class="name"><code>data</code></h3>
     <span class="type">Array</span>
 
     
@@ -228,7 +249,7 @@
             
         
         
-        <a href="../files/src_js_test-case-base.js.html#l112"><code>src&#x2F;js&#x2F;test-case-base.js:112</code></a>
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l100"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:100</code></a>
         
         </p>
 
@@ -238,7 +259,7 @@
     </div>
 
     <div class="description">
-        <p>Array of test blocks. Will be automatically be converted to TestBlock classes based on &quot;block&quot; attribute.</p>
+        <p>Array of fixture data for the model.</p>
 
     </div>
 
@@ -250,8 +271,8 @@
 </div>
 
                 
-                    <div id="property_testData" class="property item">
-    <h3 class="name"><code>testData</code></h3>
+                    <div id="property_getAdditionalData" class="property item">
+    <h3 class="name"><code>getAdditionalData</code></h3>
     <span class="type">Object</span>
 
     
@@ -273,7 +294,7 @@
             
         
         
-        <a href="../files/src_js_test-case-base.js.html#l104"><code>src&#x2F;js&#x2F;test-case-base.js:104</code></a>
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l116"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:116</code></a>
         
         </p>
 
@@ -283,7 +304,7 @@
     </div>
 
     <div class="description">
-        <p>Object of data to be shared within test case.</p>
+        <p>Additional data to be sent during a get call.</p>
 
     </div>
 
@@ -295,8 +316,143 @@
 </div>
 
                 
-                    <div id="property_title" class="property item">
-    <h3 class="name"><code>title</code></h3>
+                    <div id="property_getAdditionalData" class="property item">
+    <h3 class="name"><code>getAdditionalData</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l124"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:124</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Additional data to be sent during a getAll call.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_getAdditionalData" class="property item">
+    <h3 class="name"><code>getAdditionalData</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l132"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:132</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Additional data to be sent during a create/update call.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_modelClass" class="property item">
+    <h3 class="name"><code>modelClass</code></h3>
+    <span class="type">Class</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l108"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:108</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Ember Data model class created using ModelWrapper.createModelWrapper.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_name" class="property item">
+    <h3 class="name"><code>name</code></h3>
     <span class="type">String</span>
 
     
@@ -318,7 +474,7 @@
             
         
         
-        <a href="../files/src_js_test-case-base.js.html#l96"><code>src&#x2F;js&#x2F;test-case-base.js:96</code></a>
+        <a href="../files/src_js_test-mockapis-wrapper.js.html#l92"><code>src&#x2F;js&#x2F;test-mockapis-wrapper.js:92</code></a>
         
         </p>
 
@@ -328,7 +484,7 @@
     </div>
 
     <div class="description">
-        <p>Title of the test case.</p>
+        <p>Model name as seen by ember-data.</p>
 
     </div>
 
