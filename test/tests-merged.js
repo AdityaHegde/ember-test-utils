@@ -147,6 +147,129 @@ test("array modifiers", function() {
   equal(obj.get("vara.length"), 2);
 });
 
+module("Check Unit Test");
+
+test("TestUtils.checkElements", function() {
+  var checks = [
+    //src, path, check, exactCheck, output
+    [
+      [{vara : "a"}, {vara : "b"}, {vara : "c"}, {vara : "d"}, {vara : "e"}],
+      "vara",
+      ["a", "b", "c", "d", "e"],
+      true, true,
+    ],
+    [
+      [{vara : "a"}, {vara : "b"}, {vara : "c"}, {vara : "d"}, {vara : "e"}],
+      "vara",
+      ["a", "b", "c", "d"],
+      true, false,
+    ],
+    [
+      [{vara : "a"}, {vara : "b"}, {vara : "c"}, {vara : "d"}, {vara : "e"}],
+      "vara",
+      ["a", "b", "c", "d", "e", "f"],
+      true, false,
+    ],
+    [
+      [{vara : "a"}, {vara : "b"}, {vara : "c"}, {vara : "d"}, {vara : "e"}],
+      "vara",
+      ["a", "b", "c", "e", "d"],
+      true, false,
+    ],
+    [
+      [{vara : "a"}, {vara : "b"}, {vara : "c"}, {vara : "d"}, {vara : "e"}],
+      "vara",
+      ["a", "b", "c", "e", "d"],
+      false, true,
+    ],
+    [
+      [{vara : "a"}, {vara : "b"}, {vara : "c"}, {vara : "d"}, {vara : "e"}],
+      "vara",
+      ["a", "b", "c", "e", "f"],
+      false, false,
+    ],
+    [
+      [{vara : "a"}, {vara : "b"}, {vara : "c"}, {vara : "d"}, {vara : "e"}],
+      "vara",
+      ["a", "b", "c", "e", "d", "f"],
+      false, false,
+    ],
+    [
+      [{vara : "a"}, {vara : "b"}, {vara : "c"}, {vara : "d"}, {vara : "e"}],
+      "vara",
+      ["a", "b", "c", "e"],
+      false, false,
+    ],
+  ];
+
+  var objClass = Ember.Object.extend({
+    arr : Utils.hasMany(),
+  });
+  for(var i = 0; i < checks.length; i++) {
+    var obj = objClass.create({arr : checks[i][0]});
+    equal(TestUtils.checkElements(obj.get("arr"), checks[i][1], checks[i][2], checks[i][3]), checks[i][4]);
+  }
+});
+
+test("TestUtils.deepCheck", function() {
+  var checks = [
+    //srcObj, checkObj, output
+    [
+      {vara : "a", varb : "b"},
+      {vara : "a", varb : "b"},
+      true,
+    ],
+    [
+      {vara : "a", varb : "b"},
+      {vara : "a", varb : "c"},
+      false,
+    ],
+    [
+      {vara : "a", varb : "b", varc : "c"},
+      {vara : "a", varb : "b"},
+      true,
+    ],
+    [
+      {vara : "a"},
+      {vara : "a", varb : "b"},
+      false,
+    ],
+    [
+      {vara : "a", varb : [1, 2, 3]},
+      {vara : "a", varb : [1, 2, 3]},
+      true,
+    ],
+    [
+      {vara : "a", varb : [1, 2, 3]},
+      {vara : "a", varb : [1, 4, 3]},
+      false,
+    ],
+    [
+      {vara : "a", varb : [1, 2]},
+      {vara : "a", varb : [1, 2, 3]},
+      false,
+    ],
+    [
+      {vara : "a", varb : [1, 2, 3, 4]},
+      {vara : "a", varb : [1, 2, 3]},
+      false,
+    ],
+    [
+      {vara : "a", varb : [1, 2, 3], varc : {vard : "d"}},
+      {vara : "a", varb : [1, 2, 3], varc : {vard : "d"}},
+      true,
+    ],
+  ];
+
+  for(var i = 0; i < checks.length; i++) {
+    equal(TestUtils.deepCheck(checks[i][0], checks[i][1]), checks[i][2]);
+  }
+  for(var i = 0; i < checks.length; i++) {
+    var obj = Ember.Object.create(checks[i][0]);
+    equal(TestUtils.deepCheck(obj, checks[i][1]), checks[i][2]);
+  }
+});
+
 module("Test Suit");
 
 test("Simple Test Suit", function() {
@@ -171,7 +294,7 @@ test("Simple Test Suit", function() {
 });
 
 test("Ember Module Test Suit", function() {
-  var moduleBack = window.module,
+  var moduleBack = window.moduleForComponent,
       returnedParam, returnedSuitName, returnedModuleOpts;
   window.moduleForComponent = function(param, suitName, moduleOpts) {
     returnedSuitName = suitName;
@@ -193,7 +316,7 @@ test("Ember Module Test Suit", function() {
   equal(returnedSuitName, "Test");
   deepEqual(returnedModuleOpts, {vara : "a", varb : "b"});
 
-  window.module = moduleBack;
+  window.moduleForComponent = moduleBack;
 });
 
 module("Test Case");
@@ -211,6 +334,7 @@ test("Sanity Test", function() {
     testBlocks : [{
       type : "baseBlock",
     }],
+    assertions : 1,
   });
   testCase.register();
 
@@ -234,6 +358,7 @@ test("New Class with inherited from TestCase", function() {
     initialize : function() {
       initializeCalled = true;
     },
+    assertions : 4,
   }),
   testBlockClass = TestCase.TestBlock.extend({
     run : function(testData) {
@@ -277,6 +402,8 @@ module("Test Operations");
 
 test("Values check operation", function() {
   var testBack = window.test, 
+      okback = TestUtils.ok, equalback = TestUtils.equal,
+      waitback = TestUtils.wait, andthenback = TestUtils.andThen,
       returnedTestTitle, returnedTestFun,
       oks = [], equals = [];
   window.test = function(testTitle, testFun) {
@@ -321,10 +448,15 @@ test("Values check operation", function() {
   ]);
 
   window.test = testBack;
+  TestUtils.ok = okback;
+  TestUtils.equal = equalback;
+  TestUtils.wait = waitback;
+  TestUtils.andThen = andthenback;
 });
 
 test("Assign values operation", function() {
   var testBack = window.test, 
+      waitback = TestUtils.wait, andthenback = TestUtils.andThen,
       returnedTestTitle, returnedTestFun;
   window.test = function(testTitle, testFun) {
     returnedTestTitle = testTitle;
@@ -350,6 +482,7 @@ test("Assign values operation", function() {
         ["base",    "",       "varb",     "",       "",       "vard"],
       ]],
     ],
+    assertions : 2,
   });
   testCase.register();
 
@@ -361,4 +494,226 @@ test("Assign values operation", function() {
   equal(testData.get("varb"), "d");
 
   window.test = testBack;
+  TestUtils.wait = waitback;
+  TestUtils.andThen = andthenback;
+});
+
+Utils.addToHierarchy(TestCase.TestHierarchyMap, "ajaxCall", TestCase.TestOperation.extend({
+  run : function(testData) {
+    var back, that = this;
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      back = MockjaxUtils.MockjaxSettingsInstance;
+      MockjaxUtils.MockjaxSettingsInstance = MockjaxUtils.MockjaxSettings.create(that.get("attr5"));
+      $.ajax({
+        url : "/"+that.get("attr1")+"/"+that.get("attr2"),
+        type : that.get("attr3"),
+        data : that.get("attr4"),
+      }).then(function(data) {
+        Ember.run(function() {
+          testData.set("returnedData", data);
+          MockjaxUtils.MockjaxSettingsInstance = back;
+          resolve();
+        });
+      }, function(message) {
+        Ember.run(function() {
+          testData.set("failureMessage", message);
+          MockjaxUtils.MockjaxSettingsInstance = back;
+          resolve();
+        });
+      });
+    });
+  },
+}), 2);
+
+App.Testa = ModelWrapper.createModelWrapper({
+  vara : attr(),
+  varb : attr(),
+}, {
+  keys : ["vara"],
+  apiName : "testa",
+  queryParams : ["vara"],
+});
+MockjaxUtils.addMockjaxData({
+  name : "testa",
+  data : [{
+    id : "vara1",
+    vara : "vara1",
+    varb : "varb1",
+  }, {
+    id : "vara2",
+    vara : "vara2",
+    varb : "varb2",
+  }],
+  modelClass : App.Testa,
+  getAdditionalData : {
+    varc : "get",
+  },
+  getAllAdditionalData : {
+    varc : "getAll",
+  },
+  createUpdateAdditionalData : {
+    varc : "createUpdate",
+  },
+});
+
+
+TestCase.TestSuit.create({
+  suitName : "mockjax-wrapper.js",
+  testCases : [{
+    title : "simple get",
+    type : "baseTestCase",
+    testData : {},
+    testBlocks : [
+      ["ajaxCall", "testa", "get", "GET", { vara : "vara1" }],
+      ["baseTestBlock", [
+        ["checkValues", [
+          //"type", "path", "value", "message"
+          ["base", "returnedData.result", {
+            data : {
+              id : "vara1",
+              vara : "vara1",
+              varb : "varb1",
+            },
+            message: "Success",
+            status: 0,
+            varc: "get",
+          }, "get call returned with appropriate values."],
+        ]],
+      ]],
+    ],
+  }, {
+    title : "get with 500 server error.",
+    type : "baseTestCase",
+    testData : {},
+    testBlocks : [
+      ["ajaxCall", "testa", "get", "GET", { vara : "vara1" }, { throwServerError : true }],
+      ["baseTestBlock", [
+        ["checkValues", [
+          //"type", "path", "value", "message"
+          ["base", "failureMessage.status",     500,            "get call returned with 500 error."],
+          ["base", "failureMessage.statusText", "Server Error", "get call returned with 500 error with expected statusText."],
+        ]],
+      ]],
+    ],
+  }, {
+    title : "get with overridden 404 error server error.",
+    type : "baseTestCase",
+    testData : {},
+    testBlocks : [
+      ["ajaxCall", "testa", "get", "GET", { vara : "vara1" }, { throwServerError : true, serverErrorCode : 404 }],
+      ["baseTestBlock", [
+        ["checkValues", [
+          //"type", "path", "value", "message"
+          ["base", "failureMessage.status",     404,            "get call returned with 404 error."],
+          ["base", "failureMessage.statusText", "Server Error", "get call returned with 404 error with expected statusText."],
+        ]],
+      ]],
+    ],
+  }, {
+    title : "get with server processing error.",
+    type : "baseTestCase",
+    testData : {},
+    testBlocks : [
+      ["ajaxCall", "testa", "get", "GET", { vara : "vara1" }, { throwProcessError : 1 }],
+      ["baseTestBlock", [
+        ["checkValues", [
+          //"type", "path", "value", "message"
+          ["base", "returnedData.result", {
+            status : 1,
+            message : "Failed",
+          }, "Processing error returned appropriately."],
+        ]],
+      ]],
+    ],
+  }, {
+    title : "simple getAll",
+    type : "baseTestCase",
+    testData : {},
+    testBlocks : [
+      ["ajaxCall", "testa", "getAll", "GET"],
+      ["baseTestBlock", [
+        ["checkValues", [
+          //"type", "path", "value", "message"
+          ["base", "returnedData.result", {
+            data : [{
+              id : "vara1",
+              vara : "vara1",
+              varb : "varb1",
+            }, {
+              id : "vara2",
+              vara : "vara2",
+              varb : "varb2",
+            }],
+            message: "Success",
+            status: 0,
+            varc: "getAll",
+          }, "getAll call returned with appropriate values."],
+        ]],
+      ]],
+    ],
+  }, {
+    title : "simple create",
+    type : "baseTestCase",
+    testData : {},
+    testBlocks : [
+      ["ajaxCall", "testa", "create", "POST", { vara : "vara1", varb : "varb1" }],
+      ["baseTestBlock", [
+        ["checkValues", [
+          //"type", "path", "value", "message"
+          ["base", "returnedData.result", {
+            data : {
+              id : "vara1",
+              varc: "createUpdate",
+            },
+            message: "Success",
+            status: 0,
+          }, "create call returned with appropriate values."],
+        ]],
+      ]],
+    ],
+  }, {
+    title : "create with 500 server error.",
+    type : "baseTestCase",
+    testData : {},
+    testBlocks : [
+      ["ajaxCall", "testa", "create", "POST", { vara : "vara1", varb : "varb1" }, { throwServerError : true }],
+      ["baseTestBlock", [
+        ["checkValues", [
+          //"type", "path", "value", "message"
+          ["base", "failureMessage.status",     500,            "get call returned with 500 error."],
+          ["base", "failureMessage.statusText", "Server Error", "get call returned with 500 error with expected statusText."],
+        ]],
+      ]],
+    ],
+  }, {
+    title : "create with overridden 404 server error.",
+    type : "baseTestCase",
+    testData : {},
+    testBlocks : [
+      ["ajaxCall", "testa", "create", "POST", { vara : "vara1", varb : "varb1" }, { throwServerError : true, serverErrorCode : 404 }],
+      ["baseTestBlock", [
+        ["checkValues", [
+          //"type", "path", "value", "message"
+          ["base", "failureMessage.status",     404,            "get call returned with 404 error."],
+          ["base", "failureMessage.statusText", "Server Error", "get call returned with 404 error with expected statusText."],
+        ]],
+      ]],
+    ],
+  }, {
+    title : "create with server processing error.",
+    type : "baseTestCase",
+    testData : {},
+    testBlocks : [
+      ["ajaxCall", "testa", "create", "POST", { vara : "vara1", varb : "varb1" }, { throwProcessError : 1 }],
+      ["baseTestBlock", [
+        ["checkValues", [
+          //"type", "path", "value", "message"
+          ["base", "returnedData.result", {
+            status : 1,
+            message : "Failed",
+          }, "Processing error returned appropriately."],
+        ]],
+      ]],
+    ],
+  }],
 });

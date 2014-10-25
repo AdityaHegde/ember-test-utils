@@ -241,12 +241,25 @@ TestCase.TestCase = Ember.Object.extend({
   },
 
   run : function() {
+    expect(this.get(&quot;assertions&quot;));
     this.initialize();
     var blocks = this.get(&quot;testBlocks&quot;);
     for(var i = 0; i &lt; blocks.length; i++) {
       blocks[i].run(this.get(&quot;testData&quot;));
     }
+    wait();
   },
+
+  //assertions : Ember.computed.sum(&quot;testBlocks.@each.assertions&quot;),
+  assertions : function() {
+    var assertions = 0, testBlocks = this.get(&quot;testBlocks&quot;);
+    if(testBlocks) {
+      testBlocks.forEach(function(block) {
+        assertions += block.get(&quot;assertions&quot;);
+      });
+    }
+    return assertions;
+  }.property(&quot;testBlocks.@each.assertions&quot;),
 });
 
 TestCase.TestCaseMap = {
@@ -274,6 +287,17 @@ TestCase.TestBlock = Ember.Object.extend({
       });
     });
   },
+
+  //assertions : Ember.computed.sum(&quot;testOperations.@each.assertions&quot;),
+  assertions : function() {
+    var assertions = 0, testOperations = this.get(&quot;testOperations&quot;);
+    if(testOperations) {
+      testOperations.forEach(function(oprn) {
+        assertions += oprn.get(&quot;assertions&quot;);
+      });
+    }
+    return assertions;
+  }.property(&quot;testOperations.@each.assertions&quot;),
 });
 
 TestCase.TestBlocksMap = {

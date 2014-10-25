@@ -4,6 +4,18 @@
         "description": "A utility module for testing ember apps."
     },
     "files": {
+        "src/js/mockapis-wrapper.js": {
+            "name": "src/js/mockapis-wrapper.js",
+            "modules": {
+                "mockjax-utils": 1
+            },
+            "classes": {
+                "MockjaxUtils.MockjaxSettings": 1,
+                "MockjaxUtils.MockjaxData": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/js/test-case-base.js": {
             "name": "src/js/test-case-base.js",
             "modules": {
@@ -34,18 +46,6 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/js/test-mockapis-wrapper.js": {
-            "name": "src/js/test-mockapis-wrapper.js",
-            "modules": {
-                "mockjax-utils": 1
-            },
-            "classes": {
-                "MockjaxUtils.MockjaxSettings": 1,
-                "MockjaxUtils.MockjaxData": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
         "src/js/test-utils.js": {
             "name": "src/js/test-utils.js",
             "modules": {
@@ -59,6 +59,20 @@
         }
     },
     "modules": {
+        "mockjax-utils": {
+            "name": "mockjax-utils",
+            "submodules": {},
+            "classes": {
+                "MockjaxUtils.MockjaxSettings": 1,
+                "MockjaxUtils.MockjaxData": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 95,
+            "description": "Wrapper to mock ajax request from CrudAdaptor module."
+        },
         "test-case": {
             "name": "test-case",
             "submodules": {
@@ -80,7 +94,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/js/test-case-operations.js",
-            "line": 194,
+            "line": 199,
             "description": "Test Case Helper module."
         },
         "test-case-operation": {
@@ -100,22 +114,8 @@
             "module": "test-case",
             "namespace": "",
             "file": "src/js/test-case-operations.js",
-            "line": 194,
+            "line": 199,
             "description": "Test Operations submodule."
-        },
-        "mockjax-utils": {
-            "name": "mockjax-utils",
-            "submodules": {},
-            "classes": {
-                "MockjaxUtils.MockjaxSettings": 1,
-                "MockjaxUtils.MockjaxData": 1
-            },
-            "fors": {},
-            "namespaces": {},
-            "tag": "module",
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 86,
-            "description": "Wrapper to mock ajax request from CrudAdaptor module."
         },
         "test-utils": {
             "name": "test-utils",
@@ -132,6 +132,34 @@
         }
     },
     "classes": {
+        "MockjaxUtils.MockjaxSettings": {
+            "name": "MockjaxUtils.MockjaxSettings",
+            "shortname": "MockjaxUtils.MockjaxSettings",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "mockjax-utils",
+            "namespace": "",
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 11,
+            "description": "Mockjax settings class."
+        },
+        "MockjaxUtils.MockjaxData": {
+            "name": "MockjaxUtils.MockjaxData",
+            "shortname": "MockjaxUtils.MockjaxData",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "mockjax-utils",
+            "namespace": "",
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 95,
+            "description": "Model data used to process a call to the model."
+        },
         "TestCase.TestSuit": {
             "name": "TestCase.TestSuit",
             "shortname": "TestCase.TestSuit",
@@ -185,7 +213,7 @@
             "module": "test-case",
             "namespace": "",
             "file": "src/js/test-case-base.js",
-            "line": 136,
+            "line": 149,
             "description": "Test Case Block. A block of operations run synchronously. They are preeceded by a wait() and enclosed in andThen()."
         },
         "TestCase.TestOperation": {
@@ -215,7 +243,7 @@
             "submodule": "test-case-operation",
             "namespace": "",
             "file": "src/js/test-case-operations.js",
-            "line": 18,
+            "line": 20,
             "description": "Test Operation to check a set of values."
         },
         "TestCase.TestValueCheckObject": {
@@ -230,7 +258,7 @@
             "submodule": "test-case-operation",
             "namespace": "",
             "file": "src/js/test-case-operations.js",
-            "line": 54,
+            "line": 59,
             "description": "Object that has config for checking a value."
         },
         "TestCase.TestAssignValues": {
@@ -245,7 +273,7 @@
             "submodule": "test-case-operation",
             "namespace": "",
             "file": "src/js/test-case-operations.js",
-            "line": 105,
+            "line": 110,
             "description": "Test Operation to check a set of values."
         },
         "TestCase.TestValueAssignObject": {
@@ -260,7 +288,7 @@
             "submodule": "test-case-operation",
             "namespace": "",
             "file": "src/js/test-case-operations.js",
-            "line": 134,
+            "line": 139,
             "description": "Object that has config for checking a value."
         },
         "TestCase.SetupStore": {
@@ -275,36 +303,8 @@
             "submodule": "test-case-operation",
             "namespace": "",
             "file": "src/js/test-case-operations.js",
-            "line": 194,
+            "line": 199,
             "description": "Test Operation to setup ember data store."
-        },
-        "MockjaxUtils.MockjaxSettings": {
-            "name": "MockjaxUtils.MockjaxSettings",
-            "shortname": "MockjaxUtils.MockjaxSettings",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "mockjax-utils",
-            "namespace": "",
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 8,
-            "description": "Mockjax settings class."
-        },
-        "MockjaxUtils.MockjaxData": {
-            "name": "MockjaxUtils.MockjaxData",
-            "shortname": "MockjaxUtils.MockjaxData",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "mockjax-utils",
-            "namespace": "",
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 86,
-            "description": "Model data used to process a call to the model."
         },
         "TestUtils": {
             "name": "TestUtils",
@@ -321,6 +321,158 @@
         }
     },
     "classitems": [
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 23,
+            "description": "If set to true, all calls will throw server error with error code 'serverErrorCode'.",
+            "itemtype": "property",
+            "name": "throwServerError",
+            "type": "Boolean",
+            "default": "false",
+            "class": "MockjaxUtils.MockjaxSettings",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 32,
+            "description": "Server error code to throw when 'throwServerError' is set to true.",
+            "itemtype": "property",
+            "name": "serverErrorCode",
+            "type": "Number",
+            "default": "500",
+            "class": "MockjaxUtils.MockjaxSettings",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 41,
+            "description": "Setting to 1 is equivalent to throwing a error by server in processing request.",
+            "itemtype": "property",
+            "name": "throwProcessError",
+            "type": "Number",
+            "default": "0",
+            "class": "MockjaxUtils.MockjaxSettings",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 50,
+            "description": "A map to change the model settings used for the call.",
+            "itemtype": "property",
+            "name": "modelChangeMap",
+            "type": "Object",
+            "class": "MockjaxUtils.MockjaxSettings",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 58,
+            "description": "An object which contains data used in the last call. Has 'model', 'type' and 'params' from last call.",
+            "itemtype": "property",
+            "name": "lastPassedData",
+            "readonly": "",
+            "type": "Class",
+            "class": "MockjaxUtils.MockjaxSettings",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 67,
+            "description": "Response time to use. This is a jquerymockjax setting.",
+            "itemtype": "property",
+            "name": "responseTime",
+            "type": "Number",
+            "default": "50",
+            "class": "MockjaxUtils.MockjaxSettings",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 80,
+            "description": "If set to true, every call will be logged. This is a jquerymockjax setting.",
+            "itemtype": "property",
+            "name": "logging",
+            "type": "Boolean",
+            "default": "false",
+            "class": "MockjaxUtils.MockjaxSettings",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 101,
+            "description": "Model name as seen by ember-data.",
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "class": "MockjaxUtils.MockjaxData",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 109,
+            "description": "Array of fixture data for the model.",
+            "itemtype": "property",
+            "name": "data",
+            "type": "Array",
+            "class": "MockjaxUtils.MockjaxData",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 117,
+            "description": "Ember Data model class created using ModelWrapper.createModelWrapper.",
+            "itemtype": "property",
+            "name": "modelClass",
+            "type": "Class",
+            "class": "MockjaxUtils.MockjaxData",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 125,
+            "description": "Additional data to be sent during a get call.",
+            "itemtype": "property",
+            "name": "getAdditionalData",
+            "type": "Object",
+            "class": "MockjaxUtils.MockjaxData",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 133,
+            "description": "Additional data to be sent during a getAll call.",
+            "itemtype": "property",
+            "name": "getAdditionalData",
+            "type": "Object",
+            "class": "MockjaxUtils.MockjaxData",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 141,
+            "description": "Additional data to be sent during a create/update call.",
+            "itemtype": "property",
+            "name": "getAdditionalData",
+            "type": "Object",
+            "class": "MockjaxUtils.MockjaxData",
+            "module": "mockjax-utils"
+        },
+        {
+            "file": "src/js/mockapis-wrapper.js",
+            "line": 150,
+            "description": "Method to add mockjax model data.",
+            "itemtype": "method",
+            "name": "MockjaxUtils.addMockjaxData",
+            "params": [
+                {
+                    "name": "mockjaxData",
+                    "description": "Object which will be used to create MockjaxUtils.MockjaxData instance.",
+                    "type": "Object"
+                }
+            ],
+            "class": "MockjaxUtils.MockjaxData",
+            "module": "mockjax-utils"
+        },
         {
             "file": "src/js/test-case-base.js",
             "line": 25,
@@ -404,7 +556,7 @@
         },
         {
             "file": "src/js/test-case-operations.js",
-            "line": 60,
+            "line": 65,
             "description": "Path of the value to check. Can have indices also!",
             "itemtype": "property",
             "name": "path",
@@ -415,7 +567,7 @@
         },
         {
             "file": "src/js/test-case-operations.js",
-            "line": 68,
+            "line": 73,
             "description": "Value to check against.",
             "itemtype": "property",
             "name": "value",
@@ -426,7 +578,7 @@
         },
         {
             "file": "src/js/test-case-operations.js",
-            "line": 76,
+            "line": 81,
             "description": "Path to get value from.",
             "itemtype": "property",
             "name": "value",
@@ -437,7 +589,7 @@
         },
         {
             "file": "src/js/test-case-operations.js",
-            "line": 84,
+            "line": 89,
             "description": "Message to show when the assertion passes.",
             "itemtype": "property",
             "name": "message",
@@ -448,7 +600,7 @@
         },
         {
             "file": "src/js/test-case-operations.js",
-            "line": 140,
+            "line": 145,
             "description": "Path of the value to assign to. Can have indices also!",
             "itemtype": "property",
             "name": "path",
@@ -459,7 +611,7 @@
         },
         {
             "file": "src/js/test-case-operations.js",
-            "line": 148,
+            "line": 153,
             "description": "Path within value gotten by path to assign to.",
             "itemtype": "property",
             "name": "putPath",
@@ -470,7 +622,7 @@
         },
         {
             "file": "src/js/test-case-operations.js",
-            "line": 156,
+            "line": 161,
             "description": "Value to assign.",
             "itemtype": "property",
             "name": "value",
@@ -481,7 +633,7 @@
         },
         {
             "file": "src/js/test-case-operations.js",
-            "line": 164,
+            "line": 169,
             "description": "Path to get value from.",
             "itemtype": "property",
             "name": "value",
@@ -492,7 +644,7 @@
         },
         {
             "file": "src/js/test-case-operations.js",
-            "line": 172,
+            "line": 177,
             "description": "Param used in various operations. \nFor array operations, 0th element is operation, 1st element is additional param to operation.",
             "itemtype": "property",
             "name": "params",
@@ -500,142 +652,6 @@
             "class": "TestCase.TestValueAssignObject",
             "module": "test-case",
             "submodule": "test-case-operation"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 14,
-            "description": "If set to true, all calls will throw server error with error code 'serverErrorCode'.",
-            "itemtype": "property",
-            "name": "throwServerError",
-            "type": "Boolean",
-            "default": "false",
-            "class": "MockjaxUtils.MockjaxSettings",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 23,
-            "description": "Server error code to throw when 'throwServerError' is set to true.",
-            "itemtype": "property",
-            "name": "serverErrorCode",
-            "type": "Number",
-            "default": "500",
-            "class": "MockjaxUtils.MockjaxSettings",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 32,
-            "description": "Setting to 1 is equivalent to throwing a error by server in processing request.",
-            "itemtype": "property",
-            "name": "throwProcessError",
-            "type": "Number",
-            "default": "0",
-            "class": "MockjaxUtils.MockjaxSettings",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 41,
-            "description": "A map to change the model settings used for the call.",
-            "itemtype": "property",
-            "name": "modelChangeMap",
-            "type": "Object",
-            "class": "MockjaxUtils.MockjaxSettings",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 49,
-            "description": "An object which contains data used in the last call. Has 'model', 'type' and 'params' from last call.",
-            "itemtype": "property",
-            "name": "lastPassedData",
-            "readonly": "",
-            "type": "Class",
-            "class": "MockjaxUtils.MockjaxSettings",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 58,
-            "description": "Response time to use. This is a jquerymockjax setting.",
-            "itemtype": "property",
-            "name": "responseTime",
-            "type": "Number",
-            "default": "50",
-            "class": "MockjaxUtils.MockjaxSettings",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 71,
-            "description": "If set to true, every call will be logged. This is a jquerymockjax setting.",
-            "itemtype": "property",
-            "name": "logging",
-            "type": "Boolean",
-            "default": "false",
-            "class": "MockjaxUtils.MockjaxSettings",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 92,
-            "description": "Model name as seen by ember-data.",
-            "itemtype": "property",
-            "name": "name",
-            "type": "String",
-            "class": "MockjaxUtils.MockjaxData",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 100,
-            "description": "Array of fixture data for the model.",
-            "itemtype": "property",
-            "name": "data",
-            "type": "Array",
-            "class": "MockjaxUtils.MockjaxData",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 108,
-            "description": "Ember Data model class created using ModelWrapper.createModelWrapper.",
-            "itemtype": "property",
-            "name": "modelClass",
-            "type": "Class",
-            "class": "MockjaxUtils.MockjaxData",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 116,
-            "description": "Additional data to be sent during a get call.",
-            "itemtype": "property",
-            "name": "getAdditionalData",
-            "type": "Object",
-            "class": "MockjaxUtils.MockjaxData",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 124,
-            "description": "Additional data to be sent during a getAll call.",
-            "itemtype": "property",
-            "name": "getAdditionalData",
-            "type": "Object",
-            "class": "MockjaxUtils.MockjaxData",
-            "module": "mockjax-utils"
-        },
-        {
-            "file": "src/js/test-mockapis-wrapper.js",
-            "line": 132,
-            "description": "Additional data to be sent during a create/update call.",
-            "itemtype": "property",
-            "name": "getAdditionalData",
-            "type": "Object",
-            "class": "MockjaxUtils.MockjaxData",
-            "module": "mockjax-utils"
         },
         {
             "file": "src/js/test-utils.js",
@@ -668,12 +684,42 @@
                     "optdefault": "false"
                 }
             ],
+            "return": {
+                "description": "Returns true if the check passes, else false.",
+                "type": "Boolean"
+            },
             "class": "TestUtils",
             "module": "test-utils"
         },
         {
             "file": "src/js/test-utils.js",
-            "line": 37,
+            "line": 48,
+            "description": "Deep check an object. Doesnt fail if objSrc has more keys that objCheck in case of object but checks for array length equivalance.",
+            "itemtype": "method",
+            "name": "TestUtils.deepCheck",
+            "static": 1,
+            "params": [
+                {
+                    "name": "objSrc",
+                    "description": "The object to check in.",
+                    "type": "Any"
+                },
+                {
+                    "name": "objCheck",
+                    "description": "The object to check with.",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "Returns true if the check passes, else false.",
+                "type": "Boolean"
+            },
+            "class": "TestUtils",
+            "module": "test-utils"
+        },
+        {
+            "file": "src/js/test-utils.js",
+            "line": 86,
             "description": "Get current date with offset.",
             "itemtype": "method",
             "name": "TestUtils.getCurDate",
@@ -695,33 +741,7 @@
         },
         {
             "file": "src/js/test-utils.js",
-            "line": 53,
-            "description": "Checks a set of attributes in an ember object.",
-            "itemtype": "method",
-            "name": "TestUtils.hasAttrs",
-            "static": 1,
-            "params": [
-                {
-                    "name": "obj",
-                    "description": "Ember object to check in.",
-                    "type": "Class"
-                },
-                {
-                    "name": "attrs",
-                    "description": "An object with key values pairs to check in obj.",
-                    "type": "Object"
-                }
-            ],
-            "return": {
-                "description": "Returns true if obj has attrs else false.",
-                "type": "Boolean"
-            },
-            "class": "TestUtils",
-            "module": "test-utils"
-        },
-        {
-            "file": "src/js/test-utils.js",
-            "line": 73,
+            "line": 102,
             "description": "Setup app to start emmiting events without passing advance readinies to save time. Also registers a few views missing by default (bug?).",
             "itemtype": "method",
             "name": "TestUtils.setupAppForTesting",
@@ -743,7 +763,7 @@
         },
         {
             "file": "src/js/test-utils.js",
-            "line": 90,
+            "line": 119,
             "description": "Advanced getter with a few extra features.\nUse .i. to get into indiex i.\nUse [a=b] to run findBy(a, b).",
             "itemtype": "method",
             "name": "TestUtils.getter",
@@ -769,7 +789,7 @@
         },
         {
             "file": "src/js/test-utils.js",
-            "line": 141,
+            "line": 170,
             "description": "Advanced setter with call to TestUtils.getter",
             "itemtype": "method",
             "name": "TestUtils.setter",
@@ -803,11 +823,15 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/test-utils.js:37"
+            "line": " src/js/test-utils.js:13"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/test-utils.js:53"
+            "line": " src/js/test-utils.js:48"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/js/test-utils.js:86"
         }
     ]
 }

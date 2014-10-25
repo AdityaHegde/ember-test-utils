@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/js/test-mockapis-wrapper.js - Ember Test Utils</title>
+    <title>src/js/mockapis-wrapper.js - Ember Test Utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -114,7 +114,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/js/test-mockapis-wrapper.js</h1>
+                        <h1 class="file-heading">File: src/js/mockapis-wrapper.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -124,6 +124,9 @@
  * @module mockjax-utils
  */
 MockjaxUtils = Ember.Namespace.create();
+MockjaxUtils.RESPONSE_TIME = 100;
+$.mockjaxSettings.responseTime = MockjaxUtils.RESPONSE_TIME;
+$.mockjaxSettings.logging = false;
 
 /**
  * Mockjax settings class.
@@ -131,6 +134,12 @@ MockjaxUtils = Ember.Namespace.create();
  * @class MockjaxUtils.MockjaxSettings
  */
 MockjaxUtils.MockjaxSettings = Ember.Object.extend({
+  init : function() {
+    this._super();
+    this.get(&quot;responseTime&quot;);
+    this.get(&quot;logging&quot;);
+  },
+
   /**
    * If set to true, all calls will throw server error with error code &#x27;serverErrorCode&#x27;.
    *
@@ -184,7 +193,7 @@ MockjaxUtils.MockjaxSettings = Ember.Object.extend({
    */
   responseTime : function(key, val) {
     if(arguments.length &gt; 1) {
-      $.mockjaxSettings.responseTime = val || 50;
+      $.mockjaxSettings.responseTime = val || MockjaxUtils.RESPONSE_TIME;
     }
   }.property(),
 
@@ -223,7 +232,7 @@ MockjaxUtils.MockjaxData = Ember.Object.extend({
    * @property data
    * @type Array
    */
-  data : Utils.hasMany(),
+  data : [],
 
   /**
    * Ember Data model class created using ModelWrapper.createModelWrapper.
@@ -257,7 +266,14 @@ MockjaxUtils.MockjaxData = Ember.Object.extend({
    */
   createUpdateAdditionalData : {},
 });
-MockjaxData.addMockjaxData = function(mockjaxData) {
+
+/**
+ * Method to add mockjax model data.
+ *
+ * @method MockjaxUtils.addMockjaxData
+ * @param {Object} mockjaxData Object which will be used to create MockjaxUtils.MockjaxData instance.
+ */
+MockjaxUtils.addMockjaxData = function(mockjaxData) {
   MockjaxUtils.MockjaxDataMap[mockjaxData.name] = MockjaxUtils.MockjaxData.create(mockjaxData);
 };
 MockjaxUtils.MockjaxDataMap = {};
@@ -265,41 +281,47 @@ MockjaxUtils.MockjaxDataMap = {};
 
 urlPartsExtractRegex = new RegExp(&quot;^/(.*)/(.*?)$&quot;);
 
-MockjaxUtils.getDataForModelType = function(settings, model, type) {
-  var retData = {
-    result : {
-      status : MockjaxUtils.MockjaxSettingsInstance.get(&quot;throwProcessError&quot;),
-      message : MockjaxUtils.MockjaxSettingsInstance.get(&quot;throwProcessError&quot;) ? &quot;Failed&quot; : &quot;Success&quot;,
-    }
-  }, parts = settings.url.match(urlPartsExtractRegex),
-  params = Ember.typeOf(settings.data) === &quot;string&quot; ? JSON.parse(settings.data.replace(/^data=/, &quot;&quot;)) : settings.data;
-  model = model || (parts &amp;&amp; parts[1]);
-  type = type || (parts &amp;&amp; parts[2]);
-  if(MockjaxUtils.MockjaxSettingsInstance.get(&quot;modelChangeMap&quot;)[model]) {
-    model = MockjaxUtils.MockjaxSettingsInstance.get(&quot;modelChangeMap&quot;)[model];
+MockjaxUtils.getDataForModelType = function(mockObj, settings, model, type) {
+  if(MockjaxUtils.MockjaxSettingsInstance.get(&quot;throwServerError&quot;)) {
+    mockObj.status = MockjaxUtils.MockjaxSettingsInstance.get(&quot;serverErrorCode&quot;);
+    mockObj.statusText = &quot;Server Error&quot;;
   }
-  MockjaxUtils.MockjaxSettingsInstance.lastPassedData = {
-    model : model,
-    type : type,
-    params : params,
-  };
-  if(model &amp;&amp; type) {
-    var modelData = mockjaxData[model];
-    if(type === &quot;getAll&quot;) {
-      retData.result.data = modelData.get(&quot;data&quot;);
-      Utils.merge(retData.result, modelData.get(&quot;getAllAdditionalData&quot;));
+  else {
+    var retData = {
+      result : {
+        status : MockjaxUtils.MockjaxSettingsInstance.get(&quot;throwProcessError&quot;),
+        message : MockjaxUtils.MockjaxSettingsInstance.get(&quot;throwProcessError&quot;) ? &quot;Failed&quot; : &quot;Success&quot;,
+      }
+    }, parts = settings.url.match(urlPartsExtractRegex),
+    params = Ember.typeOf(settings.data) === &quot;string&quot; ? JSON.parse(settings.data.replace(/^data=/, &quot;&quot;)) : settings.data;
+    model = model || (parts &amp;&amp; parts[1]);
+    type = type || (parts &amp;&amp; parts[2]);
+    if(MockjaxUtils.MockjaxSettingsInstance.get(&quot;modelChangeMap&quot;)[model]) {
+      model = MockjaxUtils.MockjaxSettingsInstance.get(&quot;modelChangeMap&quot;)[model];
     }
-    else if(type === &quot;get&quot;) {
-      retData.result.data = modelData.get(&quot;data&quot;).findBy(&quot;id&quot;, CrudAdapter.getId(params, modelData.get(&quot;modelClass&quot;)));
-      Utils.merge(retData.result, modelData.get(&quot;getAdditionalData&quot;));
+    MockjaxUtils.MockjaxSettingsInstance.lastPassedData = {
+      model : model,
+      type : type,
+      params : params,
+    };
+    if(model &amp;&amp; type &amp;&amp; !MockjaxUtils.MockjaxSettingsInstance.get(&quot;throwProcessError&quot;)) {
+      var modelData = MockjaxUtils.MockjaxDataMap[model];
+      if(type === &quot;getAll&quot;) {
+        retData.result.data = modelData.get(&quot;data&quot;);
+        Utils.merge(retData.result, modelData.get(&quot;getAllAdditionalData&quot;));
+      }
+      else if(type === &quot;get&quot;) {
+        retData.result.data = modelData.get(&quot;data&quot;).findBy(&quot;id&quot;, CrudAdapter.getId(params, modelData.get(&quot;modelClass&quot;)));
+        Utils.merge(retData.result, modelData.get(&quot;getAdditionalData&quot;));
+      }
+      else if(type === &quot;delete&quot;) {
+        retData.result.data = {
+          id : CrudAdapter.getId(params, modelData.get(&quot;modelClass&quot;)),
+        };
+      }
     }
-    else if(type === &quot;delete&quot;) {
-      retData.result.data = {
-        id : CrudAdapter.getId(params, modelData.get(&quot;modelClass&quot;)),
-      };
-    }
+    mockObj.responseText = retData;
   }
-  return retData;
 };
 MockjaxUtils.createUpdateDataForModelType = function(mockObj, settings, model, type) {
   if(MockjaxUtils.MockjaxSettingsInstance.get(&quot;throwServerError&quot;)) {
@@ -324,10 +346,10 @@ MockjaxUtils.createUpdateDataForModelType = function(mockObj, settings, model, t
       type : type,
       params : params,
     };
-    if(model &amp;&amp; type) {
-      var modelData = mockjaxData[model];
+    if(model &amp;&amp; type &amp;&amp; !MockjaxUtils.MockjaxSettingsInstance.get(&quot;throwProcessError&quot;)) {
+      var modelData = MockjaxUtils.MockjaxDataMap[model];
       retData.result.data = {
-        id : type === &quot;update&quot; ? CrudAdapter.getId(params, modelData.get(&quot;modelClass&quot;)) : null,
+        id : CrudAdapter.getId(params, modelData.get(&quot;modelClass&quot;)) || &quot;someid&quot;,
       };
       Utils.merge(retData.result.data, modelData.get(&quot;createUpdateAdditionalData&quot;));
     }
@@ -339,7 +361,7 @@ $.mockjax({
   url: /\/.*?\/.*?/,
   type : &quot;GET&quot;,
   response : function(settings) {
-    this.responseText = MockjaxUtils.getDataForModelType(settings);
+    MockjaxUtils.getDataForModelType(this, settings);
   },
 });
 

@@ -22,7 +22,7 @@ test("Simple Test Suit", function() {
 });
 
 test("Ember Module Test Suit", function() {
-  var moduleBack = window.module,
+  var moduleBack = window.moduleForComponent,
       returnedParam, returnedSuitName, returnedModuleOpts;
   window.moduleForComponent = function(param, suitName, moduleOpts) {
     returnedSuitName = suitName;
@@ -44,5 +44,5 @@ test("Ember Module Test Suit", function() {
   equal(returnedSuitName, "Test");
   deepEqual(returnedModuleOpts, {vara : "a", varb : "b"});
 
-  window.module = moduleBack;
+  window.moduleForComponent = moduleBack;
 });

@@ -2,6 +2,8 @@ module("Test Operations");
 
 test("Values check operation", function() {
   var testBack = window.test, 
+      okback = TestUtils.ok, equalback = TestUtils.equal,
+      waitback = TestUtils.wait, andthenback = TestUtils.andThen,
       returnedTestTitle, returnedTestFun,
       oks = [], equals = [];
   window.test = function(testTitle, testFun) {
@@ -46,10 +48,15 @@ test("Values check operation", function() {
   ]);
 
   window.test = testBack;
+  TestUtils.ok = okback;
+  TestUtils.equal = equalback;
+  TestUtils.wait = waitback;
+  TestUtils.andThen = andthenback;
 });
 
 test("Assign values operation", function() {
   var testBack = window.test, 
+      waitback = TestUtils.wait, andthenback = TestUtils.andThen,
       returnedTestTitle, returnedTestFun;
   window.test = function(testTitle, testFun) {
     returnedTestTitle = testTitle;
@@ -75,6 +82,7 @@ test("Assign values operation", function() {
         ["base",    "",       "varb",     "",       "",       "vard"],
       ]],
     ],
+    assertions : 2,
   });
   testCase.register();
 
@@ -86,4 +94,6 @@ test("Assign values operation", function() {
   equal(testData.get("varb"), "d");
 
   window.test = testBack;
+  TestUtils.wait = waitback;
+  TestUtils.andThen = andthenback;
 });

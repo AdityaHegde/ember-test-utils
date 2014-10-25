@@ -139,19 +139,68 @@ TestUtils = Ember.Namespace.create();
  * @param {String} path The path in array to compare to.
  * @param {Array} expected The array of expected values to be present in array.
  * @param {Boolean} [exactCheck=false] Checks the exact position of elements in expected in array if true.
+ * @returns {Boolean} Returns true if the check passes, else false.
  */
 TestUtils.checkElements = function(array, path, expected, exactCheck) {
-  equal(array.get(&quot;length&quot;), expected.length, expected.length+&quot; elements are there&quot;);
+  //equal(array.get(&quot;length&quot;), expected.length, expected.length+&quot; elements are there&quot;);
+  if(array.get(&quot;length&quot;) !== expected.length) {
+    return false;
+  }
   for(var i = 0; i &lt; expected.length; i++) {
     if(exactCheck) {
       var arrayObj = array.objectAt(i);
-      TestUtils.equal(arrayObj.get(path), expected[i], &quot;element at index &quot;+i+&quot; has &quot;+path+&quot; = &quot;+expected[i]);
+      //TestUtils.equal(arrayObj.get(path), expected[i], &quot;element at index &quot;+i+&quot; has &quot;+path+&quot; = &quot;+expected[i]);
+      if(arrayObj.get(path) !== expected[i]) {
+        return false;
+      }
     }
     else {
       var found = array.findBy(path, expected[i]);
-      TestUtils.ok(found, &quot;element with &quot;+path+&quot; = &quot;+expected[i]+&quot; is present in arrangedContent&quot;);
+      //TestUtils.ok(found, &quot;element with &quot;+path+&quot; = &quot;+expected[i]+&quot; is present in arrangedContent&quot;);
+      if(!found) {
+        return false;
+      }
     }
   }
+  return true;
+}
+
+/**
+ * Deep check an object. Doesnt fail if objSrc has more keys that objCheck in case of object but checks for array length equivalance.
+ *
+ * @method TestUtils.deepCheck
+ * @static
+ * @param {any} objSrc The object to check in.
+ * @param {any} objCheck The object to check with.
+ * @returns {Boolean} Returns true if the check passes, else false.
+ */
+TestUtils.deepCheck = function(objSrc, objCheck) {
+  if(Ember.isEmpty(objSrc)) {
+    return false;
+  }
+  if(Ember.typeOf(objCheck) === &quot;object&quot;) {
+    for(var k in objCheck) {
+      var val = objSrc.get ? objSrc.get(k) : objSrc[k];
+      if(Ember.isEmpty(val) || !TestUtils.deepCheck(val, objCheck[k])) {
+        return false;
+      }
+    }
+  }
+  else if(Ember.typeOf(objCheck) === &quot;array&quot;) {
+    if(objCheck.length !== (objSrc.get ? objSrc.get(&quot;length&quot;) : objSrc.length)) {
+      return false;
+    }
+    for(var i = 0; i &lt; objCheck.length; i++) {
+      var val = objSrc.objectAt ? objSrc.objectAt(i) : objSrc[i];
+      if(Ember.isEmpty(val) || !TestUtils.deepCheck(val, objCheck[i])) {
+        return false;
+      }
+    }
+  }
+  else {
+    return objSrc === objCheck;
+  }
+  return true;
 }
 
 /**
@@ -168,26 +217,6 @@ TestUtils.getCurDate = function(offset) {
     d = new Date(d.getTime() + offset*1000);
   }
   return d.toLocaleDateString()+&quot; &quot;+d.toTimeString();
-}
-
-/**
- * Checks a set of attributes in an ember object.
- *
- * @method TestUtils.hasAttrs
- * @static
- * @param {Class} obj Ember object to check in.
- * @param {Object} attrs An object with key values pairs to check in obj.
- * @returns {Boolean} Returns true if obj has attrs else false.
- */
-TestUtils.hasAttrs = function(obj, attrs) {
-  for(var a in attrs) {
-    if(attrs.hasOwnProperty(a)) {
-      if(obj.get(a) !== attrs[a]) {
-        return false;
-      }
-    }
-  }
-  return true;
 }
 
 /**

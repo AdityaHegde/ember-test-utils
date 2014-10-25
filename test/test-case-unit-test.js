@@ -13,6 +13,7 @@ test("Sanity Test", function() {
     testBlocks : [{
       type : "baseBlock",
     }],
+    assertions : 1,
   });
   testCase.register();
 
@@ -36,6 +37,7 @@ test("New Class with inherited from TestCase", function() {
     initialize : function() {
       initializeCalled = true;
     },
+    assertions : 4,
   }),
   testBlockClass = TestCase.TestBlock.extend({
     run : function(testData) {

@@ -13,6 +13,8 @@
 TestCase.TestOperation = Ember.Object.extend({
   run : function(testData) {
   },
+
+  assertions : 0,
 });
 
 /**
@@ -20,7 +22,7 @@ TestCase.TestOperation = Ember.Object.extend({
  *
  * @class TestCase.TestValues
  */
-TestCase.TestValuesCheck = Ember.Object.extend({
+TestCase.TestValuesCheck = TestCase.TestOperation.extend({
   values : Utils.hasManyWithHierarchy("TestCase.TestValueCheckHierarchy", 0, "type"),
 
   run : function(testData) {
@@ -30,15 +32,16 @@ TestCase.TestValuesCheck = Ember.Object.extend({
           value = values[i].get("valuePath") ? 
                     TestUtils.getter(testData, values[i].get("valuePath"))[0] :
                     values[i].get("value"),
+          message = values[i].get("message"),
           getValue = TestUtils.getter(testData, path);
       if(Ember.typeOf(value) === "object") {
-        TestUtils.ok(TestUtils.hasAttrs(getValue[0], value), values[i].get("message"));
+        TestUtils.ok(TestUtils.deepCheck(getValue[0], value), message);
       }
       else if(Ember.typeOf(value) === "array") {
-        TestUtils.checkElements(getValue[1], getValue[2], value);
+        TestUtils.ok(TestUtils.checkElements(getValue[1], getValue[2], value), message);
       }
       else {
-        TestUtils.equal(getValue[0], value, values[i].get("message"));
+        TestUtils.equal(getValue[0], value, message);
       }
     }
   },
@@ -49,6 +52,8 @@ TestCase.TestValuesCheck = Ember.Object.extend({
       return value;
     }
   }.property(),
+
+  assertions : Ember.computed.alias("values.length"),
 });
 
 /**
@@ -107,7 +112,7 @@ Utils.registerHierarchy(TestCase.TestValueCheckHierarchy);
  *
  * @class TestCase.TestAssignValues
  */
-TestCase.TestAssignValues = Ember.Object.extend({
+TestCase.TestAssignValues = TestCase.TestOperation.extend({
   values : Utils.hasManyWithHierarchy("TestCase.TestValueAssignHierarchy", 0, "type"),
 
   run : function(testData) {
@@ -231,7 +236,7 @@ TestCase.TestHierarchyMap = [
       "baseTestBlock" : TestCase.TestBlock,
     },
     base : "baseTestBlock",
-    keysInArray : ["type", "testOperations", "attr1", "attr2", "attr3"],
+    keysInArray : ["type", "testOperations", "attr1", "attr2", "attr3", "attr4", "attr5"],
     childrenKey : "testOperations",
   },
   {
@@ -242,7 +247,7 @@ TestCase.TestHierarchyMap = [
       "setupStore" : TestCase.SetupStore,
     },
     base : "baseOperation",
-    keysInArray : ["type", "attr1", "attr2", "attr3"],
+    keysInArray : ["type", "attr1", "attr2", "attr3", "attr4", "attr5"],
   },
 ];
 Utils.registerHierarchy(TestCase.TestHierarchyMap);

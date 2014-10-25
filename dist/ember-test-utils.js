@@ -19,19 +19,68 @@ TestUtils = Ember.Namespace.create();
  * @param {String} path The path in array to compare to.
  * @param {Array} expected The array of expected values to be present in array.
  * @param {Boolean} [exactCheck=false] Checks the exact position of elements in expected in array if true.
+ * @returns {Boolean} Returns true if the check passes, else false.
  */
 TestUtils.checkElements = function(array, path, expected, exactCheck) {
-  equal(array.get("length"), expected.length, expected.length+" elements are there");
+  //equal(array.get("length"), expected.length, expected.length+" elements are there");
+  if(array.get("length") !== expected.length) {
+    return false;
+  }
   for(var i = 0; i < expected.length; i++) {
     if(exactCheck) {
       var arrayObj = array.objectAt(i);
-      TestUtils.equal(arrayObj.get(path), expected[i], "element at index "+i+" has "+path+" = "+expected[i]);
+      //TestUtils.equal(arrayObj.get(path), expected[i], "element at index "+i+" has "+path+" = "+expected[i]);
+      if(arrayObj.get(path) !== expected[i]) {
+        return false;
+      }
     }
     else {
       var found = array.findBy(path, expected[i]);
-      TestUtils.ok(found, "element with "+path+" = "+expected[i]+" is present in arrangedContent");
+      //TestUtils.ok(found, "element with "+path+" = "+expected[i]+" is present in arrangedContent");
+      if(!found) {
+        return false;
+      }
     }
   }
+  return true;
+}
+
+/**
+ * Deep check an object. Doesnt fail if objSrc has more keys that objCheck in case of object but checks for array length equivalance.
+ *
+ * @method TestUtils.deepCheck
+ * @static
+ * @param {any} objSrc The object to check in.
+ * @param {any} objCheck The object to check with.
+ * @returns {Boolean} Returns true if the check passes, else false.
+ */
+TestUtils.deepCheck = function(objSrc, objCheck) {
+  if(Ember.isEmpty(objSrc)) {
+    return false;
+  }
+  if(Ember.typeOf(objCheck) === "object") {
+    for(var k in objCheck) {
+      var val = objSrc.get ? objSrc.get(k) : objSrc[k];
+      if(Ember.isEmpty(val) || !TestUtils.deepCheck(val, objCheck[k])) {
+        return false;
+      }
+    }
+  }
+  else if(Ember.typeOf(objCheck) === "array") {
+    if(objCheck.length !== (objSrc.get ? objSrc.get("length") : objSrc.length)) {
+      return false;
+    }
+    for(var i = 0; i < objCheck.length; i++) {
+      var val = objSrc.objectAt ? objSrc.objectAt(i) : objSrc[i];
+      if(Ember.isEmpty(val) || !TestUtils.deepCheck(val, objCheck[i])) {
+        return false;
+      }
+    }
+  }
+  else {
+    return objSrc === objCheck;
+  }
+  return true;
 }
 
 /**
@@ -48,26 +97,6 @@ TestUtils.getCurDate = function(offset) {
     d = new Date(d.getTime() + offset*1000);
   }
   return d.toLocaleDateString()+" "+d.toTimeString();
-}
-
-/**
- * Checks a set of attributes in an ember object.
- *
- * @method TestUtils.hasAttrs
- * @static
- * @param {Class} obj Ember object to check in.
- * @param {Object} attrs An object with key values pairs to check in obj.
- * @returns {Boolean} Returns true if obj has attrs else false.
- */
-TestUtils.hasAttrs = function(obj, attrs) {
-  for(var a in attrs) {
-    if(attrs.hasOwnProperty(a)) {
-      if(obj.get(a) !== attrs[a]) {
-        return false;
-      }
-    }
-  }
-  return true;
 }
 
 /**
@@ -348,12 +377,25 @@ TestCase.TestCase = Ember.Object.extend({
   },
 
   run : function() {
+    expect(this.get("assertions"));
     this.initialize();
     var blocks = this.get("testBlocks");
     for(var i = 0; i < blocks.length; i++) {
       blocks[i].run(this.get("testData"));
     }
+    wait();
   },
+
+  //assertions : Ember.computed.sum("testBlocks.@each.assertions"),
+  assertions : function() {
+    var assertions = 0, testBlocks = this.get("testBlocks");
+    if(testBlocks) {
+      testBlocks.forEach(function(block) {
+        assertions += block.get("assertions");
+      });
+    }
+    return assertions;
+  }.property("testBlocks.@each.assertions"),
 });
 
 TestCase.TestCaseMap = {
@@ -381,6 +423,17 @@ TestCase.TestBlock = Ember.Object.extend({
       });
     });
   },
+
+  //assertions : Ember.computed.sum("testOperations.@each.assertions"),
+  assertions : function() {
+    var assertions = 0, testOperations = this.get("testOperations");
+    if(testOperations) {
+      testOperations.forEach(function(oprn) {
+        assertions += oprn.get("assertions");
+      });
+    }
+    return assertions;
+  }.property("testOperations.@each.assertions"),
 });
 
 TestCase.TestBlocksMap = {
@@ -402,6 +455,8 @@ TestCase.TestBlocksMap = {
 TestCase.TestOperation = Ember.Object.extend({
   run : function(testData) {
   },
+
+  assertions : 0,
 });
 
 /**
@@ -409,7 +464,7 @@ TestCase.TestOperation = Ember.Object.extend({
  *
  * @class TestCase.TestValues
  */
-TestCase.TestValuesCheck = Ember.Object.extend({
+TestCase.TestValuesCheck = TestCase.TestOperation.extend({
   values : Utils.hasManyWithHierarchy("TestCase.TestValueCheckHierarchy", 0, "type"),
 
   run : function(testData) {
@@ -419,15 +474,16 @@ TestCase.TestValuesCheck = Ember.Object.extend({
           value = values[i].get("valuePath") ? 
                     TestUtils.getter(testData, values[i].get("valuePath"))[0] :
                     values[i].get("value"),
+          message = values[i].get("message"),
           getValue = TestUtils.getter(testData, path);
       if(Ember.typeOf(value) === "object") {
-        TestUtils.ok(TestUtils.hasAttrs(getValue[0], value), values[i].get("message"));
+        TestUtils.ok(TestUtils.deepCheck(getValue[0], value), message);
       }
       else if(Ember.typeOf(value) === "array") {
-        TestUtils.checkElements(getValue[1], getValue[2], value);
+        TestUtils.ok(TestUtils.checkElements(getValue[1], getValue[2], value), message);
       }
       else {
-        TestUtils.equal(getValue[0], value, values[i].get("message"));
+        TestUtils.equal(getValue[0], value, message);
       }
     }
   },
@@ -438,6 +494,8 @@ TestCase.TestValuesCheck = Ember.Object.extend({
       return value;
     }
   }.property(),
+
+  assertions : Ember.computed.alias("values.length"),
 });
 
 /**
@@ -496,7 +554,7 @@ Utils.registerHierarchy(TestCase.TestValueCheckHierarchy);
  *
  * @class TestCase.TestAssignValues
  */
-TestCase.TestAssignValues = Ember.Object.extend({
+TestCase.TestAssignValues = TestCase.TestOperation.extend({
   values : Utils.hasManyWithHierarchy("TestCase.TestValueAssignHierarchy", 0, "type"),
 
   run : function(testData) {
@@ -620,7 +678,7 @@ TestCase.TestHierarchyMap = [
       "baseTestBlock" : TestCase.TestBlock,
     },
     base : "baseTestBlock",
-    keysInArray : ["type", "testOperations", "attr1", "attr2", "attr3"],
+    keysInArray : ["type", "testOperations", "attr1", "attr2", "attr3", "attr4", "attr5"],
     childrenKey : "testOperations",
   },
   {
@@ -631,7 +689,7 @@ TestCase.TestHierarchyMap = [
       "setupStore" : TestCase.SetupStore,
     },
     base : "baseOperation",
-    keysInArray : ["type", "attr1", "attr2", "attr3"],
+    keysInArray : ["type", "attr1", "attr2", "attr3", "attr4", "attr5"],
   },
 ];
 Utils.registerHierarchy(TestCase.TestHierarchyMap);
@@ -642,6 +700,9 @@ Utils.registerHierarchy(TestCase.TestHierarchyMap);
  * @module mockjax-utils
  */
 MockjaxUtils = Ember.Namespace.create();
+MockjaxUtils.RESPONSE_TIME = 100;
+$.mockjaxSettings.responseTime = MockjaxUtils.RESPONSE_TIME;
+$.mockjaxSettings.logging = false;
 
 /**
  * Mockjax settings class.
@@ -649,6 +710,12 @@ MockjaxUtils = Ember.Namespace.create();
  * @class MockjaxUtils.MockjaxSettings
  */
 MockjaxUtils.MockjaxSettings = Ember.Object.extend({
+  init : function() {
+    this._super();
+    this.get("responseTime");
+    this.get("logging");
+  },
+
   /**
    * If set to true, all calls will throw server error with error code 'serverErrorCode'.
    *
@@ -702,7 +769,7 @@ MockjaxUtils.MockjaxSettings = Ember.Object.extend({
    */
   responseTime : function(key, val) {
     if(arguments.length > 1) {
-      $.mockjaxSettings.responseTime = val || 50;
+      $.mockjaxSettings.responseTime = val || MockjaxUtils.RESPONSE_TIME;
     }
   }.property(),
 
@@ -741,7 +808,7 @@ MockjaxUtils.MockjaxData = Ember.Object.extend({
    * @property data
    * @type Array
    */
-  data : Utils.hasMany(),
+  data : [],
 
   /**
    * Ember Data model class created using ModelWrapper.createModelWrapper.
@@ -775,7 +842,14 @@ MockjaxUtils.MockjaxData = Ember.Object.extend({
    */
   createUpdateAdditionalData : {},
 });
-MockjaxData.addMockjaxData = function(mockjaxData) {
+
+/**
+ * Method to add mockjax model data.
+ *
+ * @method MockjaxUtils.addMockjaxData
+ * @param {Object} mockjaxData Object which will be used to create MockjaxUtils.MockjaxData instance.
+ */
+MockjaxUtils.addMockjaxData = function(mockjaxData) {
   MockjaxUtils.MockjaxDataMap[mockjaxData.name] = MockjaxUtils.MockjaxData.create(mockjaxData);
 };
 MockjaxUtils.MockjaxDataMap = {};
@@ -783,41 +857,47 @@ MockjaxUtils.MockjaxDataMap = {};
 
 urlPartsExtractRegex = new RegExp("^/(.*)/(.*?)$");
 
-MockjaxUtils.getDataForModelType = function(settings, model, type) {
-  var retData = {
-    result : {
-      status : MockjaxUtils.MockjaxSettingsInstance.get("throwProcessError"),
-      message : MockjaxUtils.MockjaxSettingsInstance.get("throwProcessError") ? "Failed" : "Success",
-    }
-  }, parts = settings.url.match(urlPartsExtractRegex),
-  params = Ember.typeOf(settings.data) === "string" ? JSON.parse(settings.data.replace(/^data=/, "")) : settings.data;
-  model = model || (parts && parts[1]);
-  type = type || (parts && parts[2]);
-  if(MockjaxUtils.MockjaxSettingsInstance.get("modelChangeMap")[model]) {
-    model = MockjaxUtils.MockjaxSettingsInstance.get("modelChangeMap")[model];
+MockjaxUtils.getDataForModelType = function(mockObj, settings, model, type) {
+  if(MockjaxUtils.MockjaxSettingsInstance.get("throwServerError")) {
+    mockObj.status = MockjaxUtils.MockjaxSettingsInstance.get("serverErrorCode");
+    mockObj.statusText = "Server Error";
   }
-  MockjaxUtils.MockjaxSettingsInstance.lastPassedData = {
-    model : model,
-    type : type,
-    params : params,
-  };
-  if(model && type) {
-    var modelData = mockjaxData[model];
-    if(type === "getAll") {
-      retData.result.data = modelData.get("data");
-      Utils.merge(retData.result, modelData.get("getAllAdditionalData"));
+  else {
+    var retData = {
+      result : {
+        status : MockjaxUtils.MockjaxSettingsInstance.get("throwProcessError"),
+        message : MockjaxUtils.MockjaxSettingsInstance.get("throwProcessError") ? "Failed" : "Success",
+      }
+    }, parts = settings.url.match(urlPartsExtractRegex),
+    params = Ember.typeOf(settings.data) === "string" ? JSON.parse(settings.data.replace(/^data=/, "")) : settings.data;
+    model = model || (parts && parts[1]);
+    type = type || (parts && parts[2]);
+    if(MockjaxUtils.MockjaxSettingsInstance.get("modelChangeMap")[model]) {
+      model = MockjaxUtils.MockjaxSettingsInstance.get("modelChangeMap")[model];
     }
-    else if(type === "get") {
-      retData.result.data = modelData.get("data").findBy("id", CrudAdapter.getId(params, modelData.get("modelClass")));
-      Utils.merge(retData.result, modelData.get("getAdditionalData"));
+    MockjaxUtils.MockjaxSettingsInstance.lastPassedData = {
+      model : model,
+      type : type,
+      params : params,
+    };
+    if(model && type && !MockjaxUtils.MockjaxSettingsInstance.get("throwProcessError")) {
+      var modelData = MockjaxUtils.MockjaxDataMap[model];
+      if(type === "getAll") {
+        retData.result.data = modelData.get("data");
+        Utils.merge(retData.result, modelData.get("getAllAdditionalData"));
+      }
+      else if(type === "get") {
+        retData.result.data = modelData.get("data").findBy("id", CrudAdapter.getId(params, modelData.get("modelClass")));
+        Utils.merge(retData.result, modelData.get("getAdditionalData"));
+      }
+      else if(type === "delete") {
+        retData.result.data = {
+          id : CrudAdapter.getId(params, modelData.get("modelClass")),
+        };
+      }
     }
-    else if(type === "delete") {
-      retData.result.data = {
-        id : CrudAdapter.getId(params, modelData.get("modelClass")),
-      };
-    }
+    mockObj.responseText = retData;
   }
-  return retData;
 };
 MockjaxUtils.createUpdateDataForModelType = function(mockObj, settings, model, type) {
   if(MockjaxUtils.MockjaxSettingsInstance.get("throwServerError")) {
@@ -842,10 +922,10 @@ MockjaxUtils.createUpdateDataForModelType = function(mockObj, settings, model, t
       type : type,
       params : params,
     };
-    if(model && type) {
-      var modelData = mockjaxData[model];
+    if(model && type && !MockjaxUtils.MockjaxSettingsInstance.get("throwProcessError")) {
+      var modelData = MockjaxUtils.MockjaxDataMap[model];
       retData.result.data = {
-        id : type === "update" ? CrudAdapter.getId(params, modelData.get("modelClass")) : null,
+        id : CrudAdapter.getId(params, modelData.get("modelClass")) || "someid",
       };
       Utils.merge(retData.result.data, modelData.get("createUpdateAdditionalData"));
     }
@@ -857,7 +937,7 @@ $.mockjax({
   url: /\/.*?\/.*?/,
   type : "GET",
   response : function(settings) {
-    this.responseText = MockjaxUtils.getDataForModelType(settings);
+    MockjaxUtils.getDataForModelType(this, settings);
   },
 });
 
