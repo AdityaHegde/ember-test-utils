@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>TestValueCheckObject - Ember Test Utils</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="Ember Test Utils"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/EmberTestSuit.html">EmberTestSuit</a></li>
+            
+                <li><a href="../classes/MockjaxData.html">MockjaxData</a></li>
+            
+                <li><a href="../classes/MockjaxSettings.html">MockjaxSettings</a></li>
+            
+                <li><a href="../classes/SetupStore.html">SetupStore</a></li>
+            
+                <li><a href="../classes/TestAssignValues.html">TestAssignValues</a></li>
+            
+                <li><a href="../classes/TestBlock.html">TestBlock</a></li>
+            
+                <li><a href="../classes/TestCase.html">TestCase</a></li>
+            
+                <li><a href="../classes/TestOperation.html">TestOperation</a></li>
+            
+                <li><a href="../classes/TestSuit.html">TestSuit</a></li>
+            
+                <li><a href="../classes/TestUtils.html">TestUtils</a></li>
+            
+                <li><a href="../classes/TestValueAssignObject.html">TestValueAssignObject</a></li>
+            
+                <li><a href="../classes/TestValueCheckObject.html">TestValueCheckObject</a></li>
+            
+                <li><a href="../classes/TestValuesCheck.html">TestValuesCheck</a></li>
+            
+                <li><a href="../classes/var AsyncOperation.html">var AsyncOperation</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/mockjax-utils.html">mockjax-utils</a></li>
+            
+                <li><a href="../modules/test-case.html">test-case</a></li>
+            
+                <li><a href="../modules/test-case-operation.html">test-case-operation</a></li>
+            
+                <li><a href="../modules/test-utils.html">test-utils</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>TestValueCheckObject Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_js_test-case_test-case-operations_testValueCheckObject.js.html#l8"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueCheckObject.js:8</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/test-case.html">test-case</a>
+        
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>Object that has config for checking a value.</p>
+
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+        
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+
+            
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                                <a href="#property_message">message</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_path">path</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_value">value</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_value">value</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+        </div>
+
+        
+
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property_message" class="property item">
+    <h3 class="name"><code>message</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-case_test-case-operations_testValueCheckObject.js.html#l38"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueCheckObject.js:38</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Message to show when the assertion passes.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_path" class="property item">
+    <h3 class="name"><code>path</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-case_test-case-operations_testValueCheckObject.js.html#l14"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueCheckObject.js:14</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Path of the value to check. Can have indices also!</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_value" class="property item">
+    <h3 class="name"><code>value</code></h3>
+    <span class="type">Number | Boolean | String | Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-case_test-case-operations_testValueCheckObject.js.html#l22"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueCheckObject.js:22</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Value to check against.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_value" class="property item">
+    <h3 class="name"><code>value</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-case_test-case-operations_testValueCheckObject.js.html#l30"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueCheckObject.js:30</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Path to get value from.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

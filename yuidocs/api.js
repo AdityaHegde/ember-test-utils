@@ -1,19 +1,20 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "MockjaxUtils.MockjaxData",
-        "MockjaxUtils.MockjaxSettings",
-        "TestCase.EmberTestSuit",
-        "TestCase.SetupStore",
-        "TestCase.TestAssignValues",
-        "TestCase.TestBlock",
-        "TestCase.TestCase",
-        "TestCase.TestOperation",
-        "TestCase.TestSuit",
-        "TestCase.TestValueAssignObject",
-        "TestCase.TestValueCheckObject",
-        "TestCase.TestValues",
-        "TestUtils"
+        "EmberTestSuit",
+        "MockjaxData",
+        "MockjaxSettings",
+        "SetupStore",
+        "TestAssignValues",
+        "TestBlock",
+        "TestCase",
+        "TestOperation",
+        "TestSuit",
+        "TestUtils",
+        "TestValueAssignObject",
+        "TestValueCheckObject",
+        "TestValuesCheck",
+        "var AsyncOperation"
     ],
     "modules": [
         "mockjax-utils",
@@ -30,7 +31,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "test-case",
             "name": "test-case",
-            "description": "Test Case Helper module."
+            "description": "Module with misc methods."
         },
         {
             "displayName": "test-case-operation",
@@ -40,7 +41,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "test-utils",
             "name": "test-utils",
-            "description": "Utility funcitons for testing."
+            "description": "Module with misc methods."
         }
     ]
 } };

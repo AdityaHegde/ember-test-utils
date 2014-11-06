@@ -1,8 +1,7 @@
 default:
-  - 'concat:dist'
-  - 'uglify'
+  - 'requirejs'
+  - 'qunit'
   - 'yuidoc'
-
-build_test:
-  - 'concat:dist'
-  - 'concat:test'
+  - 'concat'
+  - 'uglify'
+  - 'clean'
