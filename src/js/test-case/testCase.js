@@ -1,12 +1,12 @@
 define([
   "ember",
   "lib/ember-utils-core",
-], function(Ember) {
+], function(Ember, Utils) {
 
 /**
  * Test Case class.
  *
- * @class TestCase
+ * @class EmberTests.TestCase.TestCase
  */
 var TestCase = Ember.Object.extend({
   register : function() {
@@ -39,7 +39,7 @@ var TestCase = Ember.Object.extend({
    * @property testBlocks
    * @type Array
    */
-  testBlocks : Utils.hasManyWithHierarchy("TestCase.TestHierarchyMap", 1, "type"),
+  testBlocks : Utils.hasManyWithHierarchy("EmberTests.TestCase.TestHierarchyMap", 1, "type"),
 
   initialize : function() {
   },

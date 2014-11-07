@@ -17,7 +17,7 @@
             "name": "src/js/mockjax-utils/mockjaxData.js",
             "modules": {},
             "classes": {
-                "MockjaxData": 1
+                "EmberTests.MockjaxUtilsMockjaxData": 1
             },
             "fors": {},
             "namespaces": {}
@@ -26,7 +26,7 @@
             "name": "src/js/mockjax-utils/mockjaxSettings.js",
             "modules": {},
             "classes": {
-                "MockjaxSettings": 1
+                "EmberTests.MockjaxUtilsMockjaxSettings": 1
             },
             "fors": {},
             "namespaces": {}
@@ -35,7 +35,7 @@
             "name": "src/js/test-case/test-case-operations/asyncOperation.js",
             "modules": {},
             "classes": {
-                "var AsyncOperation": 1
+                "EmberTests.TestCase.AsyncOperation": 1
             },
             "fors": {},
             "namespaces": {}
@@ -53,7 +53,16 @@
             "name": "src/js/test-case/test-case-operations/setupStore.js",
             "modules": {},
             "classes": {
-                "SetupStore": 1
+                "EmberTests.TestCase.SetupStore": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/js/test-case/test-case-operations/testAssignValueObject.js": {
+            "name": "src/js/test-case/test-case-operations/testAssignValueObject.js",
+            "modules": {},
+            "classes": {
+                "EmberTests.TestCase.TestAssignValueObject": 1
             },
             "fors": {},
             "namespaces": {}
@@ -62,7 +71,7 @@
             "name": "src/js/test-case/test-case-operations/testAssignValues.js",
             "modules": {},
             "classes": {
-                "TestAssignValues": 1
+                "EmberTests.TestCase.TestAssignValues": 1
             },
             "fors": {},
             "namespaces": {}
@@ -71,16 +80,7 @@
             "name": "src/js/test-case/test-case-operations/testOperation.js",
             "modules": {},
             "classes": {
-                "TestOperation": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/js/test-case/test-case-operations/testValueAssignObject.js": {
-            "name": "src/js/test-case/test-case-operations/testValueAssignObject.js",
-            "modules": {},
-            "classes": {
-                "TestValueAssignObject": 1
+                "EmberTests.TestCase.TestOperation": 1
             },
             "fors": {},
             "namespaces": {}
@@ -89,7 +89,7 @@
             "name": "src/js/test-case/test-case-operations/testValueCheckObject.js",
             "modules": {},
             "classes": {
-                "TestValueCheckObject": 1
+                "EmberTests.TestCase.TestValueCheckObject": 1
             },
             "fors": {},
             "namespaces": {}
@@ -98,7 +98,7 @@
             "name": "src/js/test-case/test-case-operations/testValuesCheck.js",
             "modules": {},
             "classes": {
-                "TestValuesCheck": 1
+                "EmberTests.TestCase.TestValuesCheck": 1
             },
             "fors": {},
             "namespaces": {}
@@ -107,7 +107,7 @@
             "name": "src/js/test-case/emberTestSuit.js",
             "modules": {},
             "classes": {
-                "EmberTestSuit": 1
+                "EmberTests.TestCase.EmberTestSuit": 1
             },
             "fors": {},
             "namespaces": {}
@@ -125,7 +125,7 @@
             "name": "src/js/test-case/testBlock.js",
             "modules": {},
             "classes": {
-                "TestBlock": 1
+                "EmberTests.TestCase.TestBlock": 1
             },
             "fors": {},
             "namespaces": {}
@@ -134,7 +134,7 @@
             "name": "src/js/test-case/testCase.js",
             "modules": {},
             "classes": {
-                "TestCase": 1
+                "EmberTests.TestCase.TestCase": 1
             },
             "fors": {},
             "namespaces": {}
@@ -143,7 +143,7 @@
             "name": "src/js/test-case/testSuit.js",
             "modules": {},
             "classes": {
-                "TestSuit": 1
+                "EmberTests.TestCase.TestSuit": 1
             },
             "fors": {},
             "namespaces": {}
@@ -182,7 +182,7 @@
                 "test-utils": 1
             },
             "classes": {
-                "TestUtils": 1
+                "EmberTests.TestUtils": 1
             },
             "fors": {},
             "namespaces": {}
@@ -207,15 +207,14 @@
             "name": "mockjax-utils",
             "submodules": {},
             "classes": {
-                "MockjaxData": 1,
-                "MockjaxSettings": 1,
-                "var AsyncOperation": 1
+                "EmberTests.MockjaxUtilsMockjaxData": 1,
+                "EmberTests.MockjaxUtilsMockjaxSettings": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "src/js/test-case/test-case-operations/asyncOperation.js",
-            "line": 11,
+            "file": "src/js/mockjax-utils/mockjaxSettings.js",
+            "line": 6,
             "description": "Wrapper to mock ajax request from CrudAdaptor module."
         },
         "test-case": {
@@ -224,42 +223,51 @@
                 "test-case-operation": 1
             },
             "classes": {
-                "SetupStore": 1,
-                "TestAssignValues": 1,
-                "TestOperation": 1,
-                "TestValueAssignObject": 1,
-                "TestValueCheckObject": 1,
-                "TestValuesCheck": 1,
-                "EmberTestSuit": 1,
-                "TestBlock": 1,
-                "TestCase": 1,
-                "TestSuit": 1
+                "EmberTests.TestCase.AsyncOperation": 1,
+                "EmberTests.TestCase.SetupStore": 1,
+                "EmberTests.TestCase.TestAssignValueObject": 1,
+                "EmberTests.TestCase.TestAssignValues": 1,
+                "EmberTests.TestCase.TestOperation": 1,
+                "EmberTests.TestCase.TestValueCheckObject": 1,
+                "EmberTests.TestCase.TestValuesCheck": 1,
+                "EmberTests.TestCase.EmberTestSuit": 1,
+                "EmberTests.TestCase.TestBlock": 1,
+                "EmberTests.TestCase.TestCase": 1,
+                "EmberTests.TestCase.TestSuit": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "module",
             "file": "src/js/test-case/testSuit.js",
             "line": 7,
-            "description": "Module with misc methods."
+            "description": "Module with classes for building a test suit."
         },
         "test-case-operation": {
             "name": "test-case-operation",
             "submodules": {},
-            "classes": {},
+            "classes": {
+                "EmberTests.TestCase.AsyncOperation": 1,
+                "EmberTests.TestCase.SetupStore": 1,
+                "EmberTests.TestCase.TestAssignValueObject": 1,
+                "EmberTests.TestCase.TestAssignValues": 1,
+                "EmberTests.TestCase.TestOperation": 1,
+                "EmberTests.TestCase.TestValueCheckObject": 1,
+                "EmberTests.TestCase.TestValuesCheck": 1
+            },
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
             "module": "test-case",
             "namespace": "",
-            "file": "src/js/test-case/test-case-operations/main.js",
-            "line": 1,
+            "file": "src/js/test-case/test-case-operations/testValuesCheck.js",
+            "line": 9,
             "description": "Test Operations submodule."
         },
         "test-utils": {
             "name": "test-utils",
             "submodules": {},
             "classes": {
-                "TestUtils": 1
+                "EmberTests.TestUtils": 1
             },
             "fors": {},
             "namespaces": {},
@@ -270,9 +278,9 @@
         }
     },
     "classes": {
-        "MockjaxData": {
-            "name": "MockjaxData",
-            "shortname": "MockjaxData",
+        "EmberTests.MockjaxUtilsMockjaxData": {
+            "name": "EmberTests.MockjaxUtilsMockjaxData",
+            "shortname": "EmberTests.MockjaxUtilsMockjaxData",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -284,9 +292,9 @@
             "line": 6,
             "description": "Model data used to process a call to the model."
         },
-        "MockjaxSettings": {
-            "name": "MockjaxSettings",
-            "shortname": "MockjaxSettings",
+        "EmberTests.MockjaxUtilsMockjaxSettings": {
+            "name": "EmberTests.MockjaxUtilsMockjaxSettings",
+            "shortname": "EmberTests.MockjaxUtilsMockjaxSettings",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -298,23 +306,25 @@
             "line": 6,
             "description": "Mockjax settings class."
         },
-        "var AsyncOperation": {
-            "name": "var AsyncOperation",
-            "shortname": "var AsyncOperation",
+        "EmberTests.TestCase.AsyncOperation": {
+            "name": "EmberTests.TestCase.AsyncOperation",
+            "shortname": "EmberTests.TestCase.AsyncOperation",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "mockjax-utils",
+            "module": "test-case",
             "namespace": "",
             "file": "src/js/test-case/test-case-operations/asyncOperation.js",
             "line": 11,
-            "description": "Test Operation base class for async operations. Override asyncRun."
+            "description": "Test Operation base class for async operations. Override asyncRun.",
+            "submodule": "test-case-operation",
+            "extends": "EmberTests.TestCase.TestOperation"
         },
-        "SetupStore": {
-            "name": "SetupStore",
-            "shortname": "SetupStore",
+        "EmberTests.TestCase.SetupStore": {
+            "name": "EmberTests.TestCase.SetupStore",
+            "shortname": "EmberTests.TestCase.SetupStore",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -324,11 +334,28 @@
             "namespace": "",
             "file": "src/js/test-case/test-case-operations/setupStore.js",
             "line": 8,
-            "description": "Test Operation to setup ember data store."
+            "description": "Test Operation to setup ember data store.",
+            "submodule": "test-case-operation",
+            "extends": "EmberTests.TestCase.TestOperation"
         },
-        "TestAssignValues": {
-            "name": "TestAssignValues",
-            "shortname": "TestAssignValues",
+        "EmberTests.TestCase.TestAssignValueObject": {
+            "name": "EmberTests.TestCase.TestAssignValueObject",
+            "shortname": "EmberTests.TestCase.TestAssignValueObject",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "test-case",
+            "namespace": "",
+            "file": "src/js/test-case/test-case-operations/testAssignValueObject.js",
+            "line": 8,
+            "description": "Object that has config for checking a value.",
+            "submodule": "test-case-operation"
+        },
+        "EmberTests.TestCase.TestAssignValues": {
+            "name": "EmberTests.TestCase.TestAssignValues",
+            "shortname": "EmberTests.TestCase.TestAssignValues",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -338,11 +365,13 @@
             "namespace": "",
             "file": "src/js/test-case/test-case-operations/testAssignValues.js",
             "line": 9,
-            "description": "Test Operation to check a set of values."
+            "description": "Test Operation to check a set of values.",
+            "submodule": "test-case-operation",
+            "extends": "EmberTests.TestCase.TestOperation"
         },
-        "TestOperation": {
-            "name": "TestOperation",
-            "shortname": "TestOperation",
+        "EmberTests.TestCase.TestOperation": {
+            "name": "EmberTests.TestCase.TestOperation",
+            "shortname": "EmberTests.TestCase.TestOperation",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -352,25 +381,12 @@
             "namespace": "",
             "file": "src/js/test-case/test-case-operations/testOperation.js",
             "line": 6,
-            "description": "Test Opertaion base class."
+            "description": "Test Opertaion base class.",
+            "submodule": "test-case-operation"
         },
-        "TestValueAssignObject": {
-            "name": "TestValueAssignObject",
-            "shortname": "TestValueAssignObject",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "test-case",
-            "namespace": "",
-            "file": "src/js/test-case/test-case-operations/testValueAssignObject.js",
-            "line": 8,
-            "description": "Object that has config for checking a value."
-        },
-        "TestValueCheckObject": {
-            "name": "TestValueCheckObject",
-            "shortname": "TestValueCheckObject",
+        "EmberTests.TestCase.TestValueCheckObject": {
+            "name": "EmberTests.TestCase.TestValueCheckObject",
+            "shortname": "EmberTests.TestCase.TestValueCheckObject",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -380,11 +396,12 @@
             "namespace": "",
             "file": "src/js/test-case/test-case-operations/testValueCheckObject.js",
             "line": 8,
-            "description": "Object that has config for checking a value."
+            "description": "Object that has config for checking a value.",
+            "submodule": "test-case-operation"
         },
-        "TestValuesCheck": {
-            "name": "TestValuesCheck",
-            "shortname": "TestValuesCheck",
+        "EmberTests.TestCase.TestValuesCheck": {
+            "name": "EmberTests.TestCase.TestValuesCheck",
+            "shortname": "EmberTests.TestCase.TestValuesCheck",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -394,11 +411,13 @@
             "namespace": "",
             "file": "src/js/test-case/test-case-operations/testValuesCheck.js",
             "line": 9,
-            "description": "Test Operation to check a set of values."
+            "description": "Test Operation to check a set of values.",
+            "submodule": "test-case-operation",
+            "extends": "EmberTests.TestCase.TestOperation"
         },
-        "EmberTestSuit": {
-            "name": "EmberTestSuit",
-            "shortname": "EmberTestSuit",
+        "EmberTests.TestCase.EmberTestSuit": {
+            "name": "EmberTests.TestCase.EmberTestSuit",
+            "shortname": "EmberTests.TestCase.EmberTestSuit",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -408,11 +427,12 @@
             "namespace": "",
             "file": "src/js/test-case/emberTestSuit.js",
             "line": 7,
-            "description": "Test suit which call moduleFor* module initializer provided by ember-qunit."
+            "description": "Test suit which call moduleFor* module initializer provided by ember-qunit.",
+            "extends": "EmberTests.TestCase.TestSuit"
         },
-        "TestBlock": {
-            "name": "TestBlock",
-            "shortname": "TestBlock",
+        "EmberTests.TestCase.TestBlock": {
+            "name": "EmberTests.TestCase.TestBlock",
+            "shortname": "EmberTests.TestCase.TestBlock",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -421,12 +441,12 @@
             "module": "test-case",
             "namespace": "",
             "file": "src/js/test-case/testBlock.js",
-            "line": 6,
+            "line": 7,
             "description": "Test Case Block. A block of operations run synchronously. They are preeceded by a wait() and enclosed in andThen()."
         },
-        "TestCase": {
-            "name": "TestCase",
-            "shortname": "TestCase",
+        "EmberTests.TestCase.TestCase": {
+            "name": "EmberTests.TestCase.TestCase",
+            "shortname": "EmberTests.TestCase.TestCase",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -438,9 +458,9 @@
             "line": 6,
             "description": "Test Case class."
         },
-        "TestSuit": {
-            "name": "TestSuit",
-            "shortname": "TestSuit",
+        "EmberTests.TestCase.TestSuit": {
+            "name": "EmberTests.TestCase.TestSuit",
+            "shortname": "EmberTests.TestCase.TestSuit",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -452,9 +472,9 @@
             "line": 7,
             "description": "A simple test case suit class."
         },
-        "TestUtils": {
-            "name": "TestUtils",
-            "shortname": "TestUtils",
+        "EmberTests.TestUtils": {
+            "name": "EmberTests.TestUtils",
+            "shortname": "EmberTests.TestUtils",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -474,7 +494,7 @@
             "itemtype": "property",
             "name": "name",
             "type": "String",
-            "class": "MockjaxData",
+            "class": "EmberTests.MockjaxUtilsMockjaxData",
             "module": "mockjax-utils"
         },
         {
@@ -484,7 +504,7 @@
             "itemtype": "property",
             "name": "data",
             "type": "Array",
-            "class": "MockjaxData",
+            "class": "EmberTests.MockjaxUtilsMockjaxData",
             "module": "mockjax-utils"
         },
         {
@@ -494,7 +514,7 @@
             "itemtype": "property",
             "name": "modelClass",
             "type": "Class",
-            "class": "MockjaxData",
+            "class": "EmberTests.MockjaxUtilsMockjaxData",
             "module": "mockjax-utils"
         },
         {
@@ -504,7 +524,7 @@
             "itemtype": "property",
             "name": "getAdditionalData",
             "type": "Object",
-            "class": "MockjaxData",
+            "class": "EmberTests.MockjaxUtilsMockjaxData",
             "module": "mockjax-utils"
         },
         {
@@ -514,7 +534,7 @@
             "itemtype": "property",
             "name": "getAdditionalData",
             "type": "Object",
-            "class": "MockjaxData",
+            "class": "EmberTests.MockjaxUtilsMockjaxData",
             "module": "mockjax-utils"
         },
         {
@@ -524,7 +544,7 @@
             "itemtype": "property",
             "name": "getAdditionalData",
             "type": "Object",
-            "class": "MockjaxData",
+            "class": "EmberTests.MockjaxUtilsMockjaxData",
             "module": "mockjax-utils"
         },
         {
@@ -540,7 +560,7 @@
                     "type": "Object"
                 }
             ],
-            "class": "MockjaxData",
+            "class": "EmberTests.MockjaxUtilsMockjaxData",
             "module": "mockjax-utils"
         },
         {
@@ -551,7 +571,7 @@
             "name": "throwServerError",
             "type": "Boolean",
             "default": "false",
-            "class": "MockjaxSettings",
+            "class": "EmberTests.MockjaxUtilsMockjaxSettings",
             "module": "mockjax-utils"
         },
         {
@@ -562,7 +582,7 @@
             "name": "serverErrorCode",
             "type": "Number",
             "default": "500",
-            "class": "MockjaxSettings",
+            "class": "EmberTests.MockjaxUtilsMockjaxSettings",
             "module": "mockjax-utils"
         },
         {
@@ -573,7 +593,7 @@
             "name": "throwProcessError",
             "type": "Number",
             "default": "0",
-            "class": "MockjaxSettings",
+            "class": "EmberTests.MockjaxUtilsMockjaxSettings",
             "module": "mockjax-utils"
         },
         {
@@ -583,7 +603,7 @@
             "itemtype": "property",
             "name": "modelChangeMap",
             "type": "Object",
-            "class": "MockjaxSettings",
+            "class": "EmberTests.MockjaxUtilsMockjaxSettings",
             "module": "mockjax-utils"
         },
         {
@@ -594,7 +614,7 @@
             "name": "lastPassedData",
             "readonly": "",
             "type": "Class",
-            "class": "MockjaxSettings",
+            "class": "EmberTests.MockjaxUtilsMockjaxSettings",
             "module": "mockjax-utils"
         },
         {
@@ -605,7 +625,7 @@
             "name": "responseTime",
             "type": "Number",
             "default": "50",
-            "class": "MockjaxSettings",
+            "class": "EmberTests.MockjaxUtilsMockjaxSettings",
             "module": "mockjax-utils"
         },
         {
@@ -616,12 +636,12 @@
             "name": "logging",
             "type": "Boolean",
             "default": "false",
-            "class": "MockjaxSettings",
+            "class": "EmberTests.MockjaxUtilsMockjaxSettings",
             "module": "mockjax-utils"
         },
         {
             "file": "src/js/test-case/test-case-operations/asyncOperation.js",
-            "line": 21,
+            "line": 24,
             "description": "Method called from inside a async test helper.",
             "itemtype": "method",
             "name": "asyncRun",
@@ -629,118 +649,128 @@
                 "description": "A promise object.",
                 "type": "Class"
             },
-            "class": "var AsyncOperation",
-            "module": "mockjax-utils"
+            "class": "EmberTests.TestCase.AsyncOperation",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
-            "file": "src/js/test-case/test-case-operations/testValueAssignObject.js",
-            "line": 14,
+            "file": "src/js/test-case/test-case-operations/testAssignValueObject.js",
+            "line": 15,
             "description": "Path of the value to assign to. Can have indices also!",
             "itemtype": "property",
             "name": "path",
             "type": "String",
-            "class": "TestValueAssignObject",
-            "module": "test-case"
+            "class": "EmberTests.TestCase.TestAssignValueObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
-            "file": "src/js/test-case/test-case-operations/testValueAssignObject.js",
-            "line": 22,
+            "file": "src/js/test-case/test-case-operations/testAssignValueObject.js",
+            "line": 23,
             "description": "Path within value gotten by path to assign to.",
             "itemtype": "property",
             "name": "putPath",
             "type": "String",
-            "class": "TestValueAssignObject",
-            "module": "test-case"
+            "class": "EmberTests.TestCase.TestAssignValueObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
-            "file": "src/js/test-case/test-case-operations/testValueAssignObject.js",
-            "line": 30,
+            "file": "src/js/test-case/test-case-operations/testAssignValueObject.js",
+            "line": 31,
             "description": "Value to assign.",
             "itemtype": "property",
             "name": "value",
             "type": "Number|Boolean|String|Object",
-            "class": "TestValueAssignObject",
-            "module": "test-case"
+            "class": "EmberTests.TestCase.TestAssignValueObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
-            "file": "src/js/test-case/test-case-operations/testValueAssignObject.js",
-            "line": 38,
+            "file": "src/js/test-case/test-case-operations/testAssignValueObject.js",
+            "line": 39,
             "description": "Path to get value from.",
             "itemtype": "property",
             "name": "value",
             "type": "String",
-            "class": "TestValueAssignObject",
-            "module": "test-case"
+            "class": "EmberTests.TestCase.TestAssignValueObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
-            "file": "src/js/test-case/test-case-operations/testValueAssignObject.js",
-            "line": 46,
+            "file": "src/js/test-case/test-case-operations/testAssignValueObject.js",
+            "line": 47,
             "description": "Param used in various operations. \nFor array operations, 0th element is operation, 1st element is additional param to operation.",
             "itemtype": "property",
             "name": "params",
             "type": "Array",
-            "class": "TestValueAssignObject",
-            "module": "test-case"
+            "class": "EmberTests.TestCase.TestAssignValueObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
             "file": "src/js/test-case/test-case-operations/testValueCheckObject.js",
-            "line": 14,
+            "line": 15,
             "description": "Path of the value to check. Can have indices also!",
             "itemtype": "property",
             "name": "path",
             "type": "String",
-            "class": "TestValueCheckObject",
-            "module": "test-case"
+            "class": "EmberTests.TestCase.TestValueCheckObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
             "file": "src/js/test-case/test-case-operations/testValueCheckObject.js",
-            "line": 22,
+            "line": 23,
             "description": "Value to check against.",
             "itemtype": "property",
             "name": "value",
             "type": "Number|Boolean|String|Object",
-            "class": "TestValueCheckObject",
-            "module": "test-case"
+            "class": "EmberTests.TestCase.TestValueCheckObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
             "file": "src/js/test-case/test-case-operations/testValueCheckObject.js",
-            "line": 30,
+            "line": 31,
             "description": "Path to get value from.",
             "itemtype": "property",
             "name": "value",
             "type": "String",
-            "class": "TestValueCheckObject",
-            "module": "test-case"
+            "class": "EmberTests.TestCase.TestValueCheckObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
             "file": "src/js/test-case/test-case-operations/testValueCheckObject.js",
-            "line": 38,
+            "line": 39,
             "description": "Message to show when the assertion passes.",
             "itemtype": "property",
             "name": "message",
             "type": "String",
-            "class": "TestValueCheckObject",
-            "module": "test-case"
+            "class": "EmberTests.TestCase.TestValueCheckObject",
+            "module": "test-case",
+            "submodule": "test-case-operation"
         },
         {
             "file": "src/js/test-case/emberTestSuit.js",
-            "line": 13,
+            "line": 14,
             "description": "Module initializer function. Can have moduleFor, moduleForComponent or moduleForModel.",
             "itemtype": "property",
             "name": "moduleFunction",
             "type": "String",
             "default": "\"moduleFor\"",
-            "class": "EmberTestSuit",
+            "class": "EmberTests.TestCase.EmberTestSuit",
             "module": "test-case"
         },
         {
             "file": "src/js/test-case/emberTestSuit.js",
-            "line": 22,
+            "line": 23,
             "description": "The 1st param passed to moduleFunction.",
             "itemtype": "property",
             "name": "param",
             "type": "String",
-            "class": "EmberTestSuit",
+            "class": "EmberTests.TestCase.EmberTestSuit",
             "module": "test-case"
         },
         {
@@ -750,7 +780,7 @@
             "itemtype": "property",
             "name": "title",
             "type": "String",
-            "class": "TestCase",
+            "class": "EmberTests.TestCase.TestCase",
             "module": "test-case"
         },
         {
@@ -760,7 +790,7 @@
             "itemtype": "property",
             "name": "testData",
             "type": "Object",
-            "class": "TestCase",
+            "class": "EmberTests.TestCase.TestCase",
             "module": "test-case"
         },
         {
@@ -770,7 +800,7 @@
             "itemtype": "property",
             "name": "testBlocks",
             "type": "Array",
-            "class": "TestCase",
+            "class": "EmberTests.TestCase.TestCase",
             "module": "test-case"
         },
         {
@@ -780,7 +810,7 @@
             "itemtype": "property",
             "name": "suitName",
             "type": "String",
-            "class": "TestSuit",
+            "class": "EmberTests.TestCase.TestSuit",
             "module": "test-case"
         },
         {
@@ -790,7 +820,7 @@
             "itemtype": "property",
             "name": "moduleOpts",
             "type": "Object",
-            "class": "TestSuit",
+            "class": "EmberTests.TestCase.TestSuit",
             "module": "test-case"
         },
         {
@@ -800,7 +830,7 @@
             "itemtype": "property",
             "name": "testCases",
             "type": "Array",
-            "class": "TestSuit",
+            "class": "EmberTests.TestCase.TestSuit",
             "module": "test-case"
         },
         {
@@ -838,7 +868,7 @@
                 "description": "Returns true if the check passes, else false.",
                 "type": "Boolean"
             },
-            "class": "TestUtils",
+            "class": "EmberTests.TestUtils",
             "module": "test-case"
         },
         {
@@ -864,7 +894,7 @@
                 "description": "Returns true if the check passes, else false.",
                 "type": "Boolean"
             },
-            "class": "TestUtils",
+            "class": "EmberTests.TestUtils",
             "module": "test-case"
         },
         {
@@ -886,7 +916,7 @@
                 "description": "Returns local date + time.",
                 "type": "Date"
             },
-            "class": "TestUtils",
+            "class": "EmberTests.TestUtils",
             "module": "test-case"
         },
         {
@@ -912,7 +942,7 @@
                 "description": "Returns an array with [value, lastObj extracted, last part of path]",
                 "type": "Array"
             },
-            "class": "TestUtils",
+            "class": "EmberTests.TestUtils",
             "module": "test-case"
         },
         {
@@ -973,7 +1003,7 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/js/test-case/test-case-operations/asyncOperation.js:21"
+            "line": " src/js/test-case/test-case-operations/asyncOperation.js:24"
         },
         {
             "message": "replacing incorrect tag: returns with return",

@@ -1,9 +1,8 @@
 define([
   "ember",
   "lib/ember-utils-core",
-  "test-case/main",
-  "mockjax-utils/main",
-], function(Ember, U, TestCase, MockjaxUtils) {
+  "source/ember-test-utils",
+], function(Ember, Utils, EmberTests) {
 
 return function() {
 
@@ -11,12 +10,12 @@ window.CrudAdapter = window.CrudAdapter || {};
 window.CrudAdapter.getId = window.CrudAdapter.getId || function(obj) {
   return obj.get ? obj.get("vara") : obj["vara"];
 };
-Utils.addToHierarchy(TestCase.TestHierarchyMap, "ajaxCall", TestCase.TestOperation.extend({
+Utils.addToHierarchy(EmberTests.TestCase.TestHierarchyMap, "ajaxCall", EmberTests.TestCase.TestOperation.extend({
   run : function(testData) {
     var back, that = this;
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      back = MockjaxUtils.MockjaxSettings.MockjaxSettingsInstance;
-      MockjaxUtils.MockjaxSettings.MockjaxSettingsInstance = MockjaxUtils.MockjaxSettings.create(that.get("attr5"));
+      back = EmberTests.MockjaxUtils.MockjaxSettings.MockjaxSettingsInstance;
+      EmberTests.MockjaxUtils.MockjaxSettings.MockjaxSettingsInstance = EmberTests.MockjaxUtils.MockjaxSettings.create(that.get("attr5"));
       $.ajax({
         url : "/"+that.get("attr1")+"/"+that.get("attr2"),
         type : that.get("attr3"),
@@ -24,13 +23,13 @@ Utils.addToHierarchy(TestCase.TestHierarchyMap, "ajaxCall", TestCase.TestOperati
       }).then(function(data) {
         Ember.run(function() {
           testData.set("returnedData", data);
-          MockjaxUtils.MockjaxSettings.MockjaxSettingsInstance = back;
+          EmberTests.MockjaxUtils.MockjaxSettings.MockjaxSettingsInstance = back;
           resolve();
         });
       }, function(message) {
         Ember.run(function() {
           testData.set("failureMessage", message);
-          MockjaxUtils.MockjaxSettings.MockjaxSettingsInstance = back;
+          EmberTests.MockjaxUtils.MockjaxSettings.MockjaxSettingsInstance = back;
           resolve();
         });
       });
@@ -42,7 +41,7 @@ App.Testa = Ember.Object.extend({
   vara : "",
   varb : "",
 });
-MockjaxUtils.addMockjaxData({
+EmberTests.MockjaxUtils.addMockjaxData({
   name : "testa",
   data : [{
     id : "vara1",
@@ -66,7 +65,7 @@ MockjaxUtils.addMockjaxData({
 });
 
 
-TestCase.TestSuit.create({
+EmberTests.TestCase.TestSuit.create({
   suitName : "mockjax-wrapper.js",
   testCases : [{
     title : "simple get",

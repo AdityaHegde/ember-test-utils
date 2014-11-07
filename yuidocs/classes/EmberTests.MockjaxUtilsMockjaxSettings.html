@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MockjaxData - Ember Test Utils</title>
+    <title>EmberTests.MockjaxUtilsMockjaxSettings - Ember Test Utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -41,33 +41,33 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/EmberTestSuit.html">EmberTestSuit</a></li>
+                <li><a href="../classes/EmberTests.MockjaxUtilsMockjaxData.html">EmberTests.MockjaxUtilsMockjaxData</a></li>
             
-                <li><a href="../classes/MockjaxData.html">MockjaxData</a></li>
+                <li><a href="../classes/EmberTests.MockjaxUtilsMockjaxSettings.html">EmberTests.MockjaxUtilsMockjaxSettings</a></li>
             
-                <li><a href="../classes/MockjaxSettings.html">MockjaxSettings</a></li>
+                <li><a href="../classes/EmberTests.TestCase.AsyncOperation.html">EmberTests.TestCase.AsyncOperation</a></li>
             
-                <li><a href="../classes/SetupStore.html">SetupStore</a></li>
+                <li><a href="../classes/EmberTests.TestCase.EmberTestSuit.html">EmberTests.TestCase.EmberTestSuit</a></li>
             
-                <li><a href="../classes/TestAssignValues.html">TestAssignValues</a></li>
+                <li><a href="../classes/EmberTests.TestCase.SetupStore.html">EmberTests.TestCase.SetupStore</a></li>
             
-                <li><a href="../classes/TestBlock.html">TestBlock</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestAssignValueObject.html">EmberTests.TestCase.TestAssignValueObject</a></li>
             
-                <li><a href="../classes/TestCase.html">TestCase</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestAssignValues.html">EmberTests.TestCase.TestAssignValues</a></li>
             
-                <li><a href="../classes/TestOperation.html">TestOperation</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestBlock.html">EmberTests.TestCase.TestBlock</a></li>
             
-                <li><a href="../classes/TestSuit.html">TestSuit</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestCase.html">EmberTests.TestCase.TestCase</a></li>
             
-                <li><a href="../classes/TestUtils.html">TestUtils</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestOperation.html">EmberTests.TestCase.TestOperation</a></li>
             
-                <li><a href="../classes/TestValueAssignObject.html">TestValueAssignObject</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestSuit.html">EmberTests.TestCase.TestSuit</a></li>
             
-                <li><a href="../classes/TestValueCheckObject.html">TestValueCheckObject</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestValueCheckObject.html">EmberTests.TestCase.TestValueCheckObject</a></li>
             
-                <li><a href="../classes/TestValuesCheck.html">TestValuesCheck</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestValuesCheck.html">EmberTests.TestCase.TestValuesCheck</a></li>
             
-                <li><a href="../classes/var AsyncOperation.html">var AsyncOperation</a></li>
+                <li><a href="../classes/EmberTests.TestUtils.html">EmberTests.TestUtils</a></li>
             
             </ul>
 
@@ -116,7 +116,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>MockjaxData Class</h1>
+                        <h1>EmberTests.MockjaxUtilsMockjaxSettings Class</h1>
 <div class="box meta">
     
 
@@ -124,7 +124,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_js_mockjax-utils_mockjaxData.js.html#l6"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxData.js:6</code></a>
+            Defined in: <a href="../files/src_js_mockjax-utils_mockjaxSettings.js.html#l6"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxSettings.js:6</code></a>
         </div>
     
 
@@ -140,7 +140,7 @@
 
 
 <div class="box intro">
-    <p>Model data used to process a call to the model.</p>
+    <p>Mockjax settings class.</p>
 
 </div>
 
@@ -150,8 +150,6 @@
     <ul class="api-class-tabs">
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
-        
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
         
             <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
@@ -165,21 +163,6 @@
             <h2 class="off-left">Item Index</h2>
 
             
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-                                <a href="#method_addMockjaxData">addMockjaxData</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
 
             
                 <div class="index-section properties">
@@ -188,42 +171,49 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_data">data</a>
+                                <a href="#property_lastPassedData">lastPassedData</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_getAdditionalData">getAdditionalData</a>
+                                <a href="#property_logging">logging</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_getAdditionalData">getAdditionalData</a>
+                                <a href="#property_modelChangeMap">modelChangeMap</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_getAdditionalData">getAdditionalData</a>
+                                <a href="#property_responseTime">responseTime</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_modelClass">modelClass</a>
+                                <a href="#property_serverErrorCode">serverErrorCode</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_name">name</a>
+                                <a href="#property_throwProcessError">throwProcessError</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_throwServerError">throwServerError</a>
 
                                 
                                 
@@ -239,289 +229,14 @@
         </div>
 
         
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_addMockjaxData" class="method item">
-    <h3 class="name"><code>addMockjaxData</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>mockjaxData</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_js_mockjax-utils_mockjaxData.js.html#l61"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxData.js:61</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Method to add mockjax model data.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">mockjaxData</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Object which will be used to create MockjaxData instance.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
 
         
             <div id="properties" class="api-class-tabpanel">
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_data" class="property item">
-    <h3 class="name"><code>data</code></h3>
-    <span class="type">Array</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_js_mockjax-utils_mockjaxData.js.html#l20"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxData.js:20</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Array of fixture data for the model.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_getAdditionalData" class="property item">
-    <h3 class="name"><code>getAdditionalData</code></h3>
-    <span class="type">Object</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_js_mockjax-utils_mockjaxData.js.html#l36"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxData.js:36</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Additional data to be sent during a get call.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_getAdditionalData" class="property item">
-    <h3 class="name"><code>getAdditionalData</code></h3>
-    <span class="type">Object</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_js_mockjax-utils_mockjaxData.js.html#l44"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxData.js:44</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Additional data to be sent during a getAll call.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_getAdditionalData" class="property item">
-    <h3 class="name"><code>getAdditionalData</code></h3>
-    <span class="type">Object</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_js_mockjax-utils_mockjaxData.js.html#l52"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxData.js:52</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Additional data to be sent during a create/update call.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_modelClass" class="property item">
-    <h3 class="name"><code>modelClass</code></h3>
+                    <div id="property_lastPassedData" class="property item">
+    <h3 class="name"><code>lastPassedData</code></h3>
     <span class="type">Class</span>
 
     
@@ -543,7 +258,7 @@
             
         
         
-        <a href="../files/src_js_mockjax-utils_mockjaxData.js.html#l28"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxData.js:28</code></a>
+        <a href="../files/src_js_mockjax-utils_mockjaxSettings.js.html#l53"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxSettings.js:53</code></a>
         
         </p>
 
@@ -553,7 +268,7 @@
     </div>
 
     <div class="description">
-        <p>Ember Data model class created using ModelWrapper.createModelWrapper.</p>
+        <p>An object which contains data used in the last call. Has &#39;model&#39;, &#39;type&#39; and &#39;params&#39; from last call.</p>
 
     </div>
 
@@ -565,9 +280,9 @@
 </div>
 
                 
-                    <div id="property_name" class="property item">
-    <h3 class="name"><code>name</code></h3>
-    <span class="type">String</span>
+                    <div id="property_logging" class="property item">
+    <h3 class="name"><code>logging</code></h3>
+    <span class="type">Boolean</span>
 
     
 
@@ -588,7 +303,7 @@
             
         
         
-        <a href="../files/src_js_mockjax-utils_mockjaxData.js.html#l12"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxData.js:12</code></a>
+        <a href="../files/src_js_mockjax-utils_mockjaxSettings.js.html#l75"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxSettings.js:75</code></a>
         
         </p>
 
@@ -598,10 +313,245 @@
     </div>
 
     <div class="description">
-        <p>Model name as seen by ember-data.</p>
+        <p>If set to true, every call will be logged. This is a jquerymockjax setting.</p>
 
     </div>
 
+    
+        <p><strong>Default:</strong> false</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_modelChangeMap" class="property item">
+    <h3 class="name"><code>modelChangeMap</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_mockjax-utils_mockjaxSettings.js.html#l45"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxSettings.js:45</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A map to change the model settings used for the call.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_responseTime" class="property item">
+    <h3 class="name"><code>responseTime</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_mockjax-utils_mockjaxSettings.js.html#l62"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxSettings.js:62</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Response time to use. This is a jquerymockjax setting.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 50</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_serverErrorCode" class="property item">
+    <h3 class="name"><code>serverErrorCode</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_mockjax-utils_mockjaxSettings.js.html#l27"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxSettings.js:27</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Server error code to throw when &#39;throwServerError&#39; is set to true.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 500</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_throwProcessError" class="property item">
+    <h3 class="name"><code>throwProcessError</code></h3>
+    <span class="type">Number</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_mockjax-utils_mockjaxSettings.js.html#l36"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxSettings.js:36</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Setting to 1 is equivalent to throwing a error by server in processing request.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> 0</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_throwServerError" class="property item">
+    <h3 class="name"><code>throwServerError</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_mockjax-utils_mockjaxSettings.js.html#l18"><code>src&#x2F;js&#x2F;mockjax-utils&#x2F;mockjaxSettings.js:18</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If set to true, all calls will throw server error with error code &#39;serverErrorCode&#39;.</p>
+
+    </div>
+
+    
+        <p><strong>Default:</strong> false</p>
     
 
     

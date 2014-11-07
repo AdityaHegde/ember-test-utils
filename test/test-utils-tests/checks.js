@@ -1,11 +1,8 @@
 define([
   "ember",
-  "test-utils/checkElements",
-  "test-utils/deepCheck",
   "lib/ember-utils-core",
-], function(Ember, checkElements, deepCheck) {
-checkElements = checkElements.checkElements;
-deepCheck = deepCheck.deepCheck;
+  "source/ember-test-utils",
+], function(Ember, Utils, EmberTests) {
 
 return function() {
 
@@ -69,7 +66,7 @@ test("TestUtils.checkElements", function() {
   });
   for(var i = 0; i < checks.length; i++) {
     var obj = objClass.create({arr : checks[i][0]});
-    equal(checkElements(obj.get("arr"), checks[i][1], checks[i][2], checks[i][3]), checks[i][4]);
+    equal(EmberTests.TestUtils.checkElements(obj.get("arr"), checks[i][1], checks[i][2], checks[i][3]), checks[i][4]);
   }
 });
 
@@ -124,11 +121,11 @@ test("TestUtils.deepCheck", function() {
   ];
 
   for(var i = 0; i < checks.length; i++) {
-    equal(deepCheck(checks[i][0], checks[i][1]), checks[i][2]);
+    equal(EmberTests.TestUtils.deepCheck(checks[i][0], checks[i][1]), checks[i][2]);
   }
   for(var i = 0; i < checks.length; i++) {
     var obj = Ember.Object.create(checks[i][0]);
-    equal(deepCheck(obj, checks[i][1]), checks[i][2]);
+    equal(EmberTests.TestUtils.deepCheck(obj, checks[i][1]), checks[i][2]);
   }
 });
 

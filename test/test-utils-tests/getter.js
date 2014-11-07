@@ -1,8 +1,7 @@
 define([
   "ember",
-  "test-utils/getter",
-], function(Ember, getter) {
-getter = getter.getter;
+  "source/ember-test-utils",
+], function(Ember, EmberTests) {
 
 return function() {
 
@@ -19,9 +18,9 @@ test("Simple get value", function() {
     }),
   });
 
-  equal(getter(obj, "vara")[0], "a");
-  equal(getter(obj, "varb.varc")[0], "c");
-  equal(getter(obj, "varb.vard.vare")[0], "e");
+  equal(EmberTests.TestUtils.getter(obj, "vara")[0], "a");
+  equal(EmberTests.TestUtils.getter(obj, "varb.varc")[0], "c");
+  equal(EmberTests.TestUtils.getter(obj, "varb.vard.vare")[0], "e");
 });
 
 test("Get on arrays", function() {
@@ -40,12 +39,12 @@ test("Get on arrays", function() {
     varf : ["a", "b", "c"],
   });
 
-  equal(getter(obj, "varb.0.varc")[0], "c1");
-  equal(getter(obj, "varb.1.varc")[0], "c2");
-  equal(getter(obj, "varb.1.vard.vare")[0], "e");
-  equal(getter(obj, "varb.[varc=c3].varc")[0], "c3");
-  equal(getter(obj, "varf.1")[0], "b");
-  equal(getter(obj, "varb.[varc=c2]")[0], obj.get("varb").objectAt(1));
+  equal(EmberTests.TestUtils.getter(obj, "varb.0.varc")[0], "c1");
+  equal(EmberTests.TestUtils.getter(obj, "varb.1.varc")[0], "c2");
+  equal(EmberTests.TestUtils.getter(obj, "varb.1.vard.vare")[0], "e");
+  equal(EmberTests.TestUtils.getter(obj, "varb.[varc=c3].varc")[0], "c3");
+  equal(EmberTests.TestUtils.getter(obj, "varf.1")[0], "b");
+  equal(EmberTests.TestUtils.getter(obj, "varb.[varc=c2]")[0], obj.get("varb").objectAt(1));
 });
 
 };

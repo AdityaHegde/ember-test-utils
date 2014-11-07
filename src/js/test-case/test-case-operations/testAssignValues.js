@@ -1,18 +1,20 @@
 define([
   "ember",
   "./testOperation",
-  "./testValueAssignHierarchy",
+  "./testAssignValueHierarchy",
   "lib/ember-utils-core",
   "../../test-utils/main",
-], function(Ember, TestOperation, TestValueAssignHierarchy) {
+], function(Ember, TestOperation, TestAssignValueHierarchy, Utils, TestUtils) {
 
 /**
  * Test Operation to check a set of values.
  *
- * @class TestAssignValues
+ * @class EmberTests.TestCase.TestAssignValues
+ * @extends EmberTests.TestCase.TestOperation
+ * @submodule test-case-operation
  */
 TestAssignValues = TestOperation.TestOperation.extend({
-  values : Utils.hasManyWithHierarchy(TestValueAssignHierarchy, 0, "type"),
+  values : Utils.hasManyWithHierarchy(TestAssignValueHierarchy, 0, "type"),
 
   run : function(testData) {
     var values = this.get("values");

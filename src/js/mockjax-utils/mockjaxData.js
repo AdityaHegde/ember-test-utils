@@ -6,7 +6,7 @@ define([
 /**
  * Model data used to process a call to the model.
  *
- * @class MockjaxData
+ * @class EmberTests.MockjaxUtilsMockjaxData
  */
 var MockjaxData = Ember.Object.extend({
   /**

@@ -8,9 +8,10 @@ define([
 /**
  * Object that has config for checking a value.
  *
- * @class TestValueAssignObject
+ * @class EmberTests.TestCase.TestAssignValueObject
+ * @submodule test-case-operation
  */
-var TestValueAssignObject = Ember.Object.extend({
+var TestAssignValueObject = Ember.Object.extend({
   /**
    * Path of the value to assign to. Can have indices also!
    *
@@ -54,7 +55,7 @@ var TestValueAssignObject = Ember.Object.extend({
 });
 
 return {
-  TestValueAssignObject : TestValueAssignObject,
+  TestAssignValueObject : TestAssignValueObject,
 };
 
 });

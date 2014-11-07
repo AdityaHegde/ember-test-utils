@@ -11,7 +11,7 @@ define([
   "./createUpdateDataForModelType",
 ], function() {
   var MockjaxUtils = Ember.Namespace.create();
-  window.MockjaxUtils = MockjaxUtils;
+  //window.MockjaxUtils = MockjaxUtils;
 
   for(var i = 0; i < arguments.length; i++) {
     for(var k in arguments[i]) {

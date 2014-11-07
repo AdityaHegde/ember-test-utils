@@ -8,7 +8,8 @@ define([
 /**
  * Object that has config for checking a value.
  *
- * @class TestValueCheckObject
+ * @class EmberTests.TestCase.TestValueCheckObject
+ * @submodule test-case-operation
  */
 var TestValueCheckObject = Ember.Object.extend({
   /**

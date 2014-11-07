@@ -1,10 +1,7 @@
 define([
   "ember",
-  "test-case/testCase",
-  "test-case/testBlock",
-  "test-case/addToTestHierarchy",
-], function(Ember, TestCase, TestBlock, addToTestHierarchy) {
-addToTestHierarchy = addToTestHierarchy.addToTestHierarchy;
+  "source/ember-test-utils",
+], function(Ember, EmberTests) {
 
 return function() {
 
@@ -17,7 +14,7 @@ test("Sanity Test", function() {
     returnedTestFun = testFun;
   }
 
-  var testCase = TestCase.TestCase.create({
+  var testCase = EmberTests.TestCase.TestCase.create({
     title : "Test",
     testData : {},
     testBlocks : [{
@@ -43,20 +40,20 @@ test("New Class with inherited from TestCase", function() {
   testBack = window.test, returnedTestTitle, returnedTestFun,
   initializeCalled = false, runOnBlockCalled = false,
   returnedTestData,
-  testCaseClass = TestCase.TestCase.extend({
+  testCaseClass = EmberTests.TestCase.TestCase.extend({
     initialize : function() {
       initializeCalled = true;
     },
     assertions : 4,
   }),
-  testBlockClass = TestBlock.TestBlock.extend({
+  testBlockClass = EmberTests.TestCase.TestBlock.extend({
     run : function(testData) {
       runOnBlockCalled = true;
       returnedTestData = testData;
     },
   });
-  addToTestHierarchy("testTC", testCaseClass, "tc")
-  addToTestHierarchy("testBl", testBlockClass, "tb")
+  EmberTests.TestCase.addToTestHierarchy("testTC", testCaseClass, "tc")
+  EmberTests.TestCase.addToTestHierarchy("testBl", testBlockClass, "tb")
   window.test = function(testTitle, testFun) {
     returnedTestTitle = testTitle;
     returnedTestFun = testFun;

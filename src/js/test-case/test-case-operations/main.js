@@ -8,10 +8,11 @@
 define([
   "./testOperation",
   "./testAssignValues",
-  "./testValueAssignObject",
+  "./testAssignValueObject",
   "./testValueCheckObject",
   "./testValuesCheck",
   "./setupStore",
+  "./asyncOperation",
 ], function() {
   var operations = {};
 

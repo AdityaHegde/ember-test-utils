@@ -1,9 +1,10 @@
 define([
   "ember",
+  "lib/ember-utils-core",
   "./test-utils/main",
   "./test-case/main",
   "./mockjax-utils/main",
-], function(Ember, TestUtils, TestCase, MockjaxUtils) {
+], function(Ember, Utils, TestUtils, TestCase, MockjaxUtils) {
   if(!Ember.isEmpty(window.QUnit)) {
     QUnit.config.reorder = false;
     QUnit.config.autostart = false;
@@ -22,4 +23,12 @@ define([
       TestUtils.andThen = andThen;
     });
   }
+  var EmberTests = Ember.Namespace.create();
+  EmberTests.TestUtils = TestUtils;
+  EmberTests.TestCase = TestCase;
+  EmberTests.MockjaxUtils = MockjaxUtils;
+
+  window.EmberTests = EmberTests;
+
+  return EmberTests;
 });

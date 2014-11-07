@@ -1,5 +1,5 @@
 /**
- * Module with misc methods.
+ * Module with classes for building a test suit.
  *
  * @module test-case
  */
@@ -13,7 +13,7 @@ define([
   "./addToTestHierarchy",
 ], function() {
   var TestCase = Ember.Namespace.create();
-  window.TestCase = TestCase;
+  //window.TestCase = TestCase;
 
   for(var i = 0; i < arguments.length; i++) {
     for(var k in arguments[i]) {

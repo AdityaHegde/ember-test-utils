@@ -1,7 +1,7 @@
 module.exports = {
   dist : {
     files : {
-      "dist/ember-test-utils.js" : ["build/main.js"],
+      "dist/ember-test-utils.js" : ["build/ember-test-utils.js"],
     }
   },
 };

@@ -1,11 +1,12 @@
 requirejs([
   "ember_qunit",
   "lib/ember-utils-core",
-  "test-app",
-  "./test-utils-tests/main",
-  "./test-case-tests/main",
-  "./mockjax-utils-tests",
-], function() {
+  "source/ember-test-utils",
+  "test/test-app",
+  "test/test-utils-tests/main",
+  "test/test-case-tests/main",
+  "test/mockjax-utils-tests",
+], function(emq, Utils, EmberTests) {
   QUnit.config.reorder = false;
   QUnit.config.autostart = false;
   //workaroud for qunit not reporting toatal tests
@@ -17,12 +18,12 @@ requirejs([
   };
   QUnit.begin(function (args) {
     args.totalTests = testCount;
-    TestUtils.equal = equal;
-    TestUtils.ok = ok;
-    TestUtils.wait = wait;
-    TestUtils.andThen = andThen;
+    EmberTests.TestUtils.equal = equal;
+    EmberTests.TestUtils.ok = ok;
+    EmberTests.TestUtils.wait = wait;
+    EmberTests.TestUtils.andThen = andThen;
   });
-  for(var i = 3; i < arguments.length; i++) {
+  for(var i = 4; i < arguments.length; i++) {
     arguments[i]();
   }
   QUnit.load();

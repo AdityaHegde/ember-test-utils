@@ -4,12 +4,14 @@ define([
   "./testValueCheckHierarchy",
   "lib/ember-utils-core",
   "../../test-utils/main",
-], function(Ember, TestOperation, TestValueCheckHierarchy) {
+], function(Ember, TestOperation, TestValueCheckHierarchy, Utils, TestUtils) {
 
 /**
  * Test Operation to check a set of values.
  *
- * @class TestValuesCheck
+ * @class EmberTests.TestCase.TestValuesCheck
+ * @extends EmberTests.TestCase.TestOperation
+ * @submodule test-case-operation
  */
 var TestValuesCheck = TestOperation.TestOperation.extend({
   values : Utils.hasManyWithHierarchy(TestValueCheckHierarchy, 0, "type"),

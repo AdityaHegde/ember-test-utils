@@ -1,8 +1,7 @@
 define([
   "ember",
-  "test-utils/main",
-  "test-case/main",
-], function(Ember, TestUtils, TestCase) {
+  "source/ember-test-utils",
+], function(Ember, EmberTests) {
 
 return function() {
 
@@ -10,26 +9,26 @@ module("Test Operations");
 
 test("Values check operation", function() {
   var testBack = window.test, 
-      okback = TestUtils.ok, equalback = TestUtils.equal,
-      waitback = TestUtils.wait, andthenback = TestUtils.andThen,
+      okback = EmberTests.TestUtils.ok, equalback = EmberTests.TestUtils.equal,
+      waitback = EmberTests.TestUtils.wait, andthenback = EmberTests.TestUtils.andThen,
       returnedTestTitle, returnedTestFun,
       oks = [], equals = [];
   window.test = function(testTitle, testFun) {
     returnedTestTitle = testTitle;
     returnedTestFun = testFun;
   }
-  TestUtils.ok = function(bool, msg) {
+  EmberTests.TestUtils.ok = function(bool, msg) {
     oks.push([bool, msg]);
   };
-  TestUtils.equal = function(val1, val2, msg) {
+  EmberTests.TestUtils.equal = function(val1, val2, msg) {
     equals.push([val1, val2, msg]);
   };
-  TestUtils.wait = function() {};
-  TestUtils.andThen = function(fun) {
+  EmberTests.TestUtils.wait = function() {};
+  EmberTests.TestUtils.andThen = function(fun) {
     fun();
   };
 
-  var testCase = TestCase.TestCase.create({
+  var testCase = EmberTests.TestCase.TestCase.create({
     title : "Test",
     testData : {
       vara : "a",
@@ -56,26 +55,26 @@ test("Values check operation", function() {
   ]);
 
   window.test = testBack;
-  TestUtils.ok = okback;
-  TestUtils.equal = equalback;
-  TestUtils.wait = waitback;
-  TestUtils.andThen = andthenback;
+  EmberTests.TestUtils.ok = okback;
+  EmberTests.TestUtils.equal = equalback;
+  EmberTests.TestUtils.wait = waitback;
+  EmberTests.TestUtils.andThen = andthenback;
 });
 
 test("Assign values operation", function() {
   var testBack = window.test, 
-      waitback = TestUtils.wait, andthenback = TestUtils.andThen,
+      waitback = EmberTests.TestUtils.wait, andthenback = EmberTests.TestUtils.andThen,
       returnedTestTitle, returnedTestFun;
   window.test = function(testTitle, testFun) {
     returnedTestTitle = testTitle;
     returnedTestFun = testFun;
   }
-  TestUtils.wait = function() {};
-  TestUtils.andThen = function(fun) {
+  EmberTests.TestUtils.wait = function() {};
+  EmberTests.TestUtils.andThen = function(fun) {
     fun();
   };
 
-  var testCase = TestCase.TestCase.create({
+  var testCase = EmberTests.TestCase.TestCase.create({
     title : "Test",
     testData : {
       vara : "a",
@@ -102,8 +101,8 @@ test("Assign values operation", function() {
   equal(testData.get("varb"), "d");
 
   window.test = testBack;
-  TestUtils.wait = waitback;
-  TestUtils.andThen = andthenback;
+  EmberTests.TestUtils.wait = waitback;
+  EmberTests.TestUtils.andThen = andthenback;
 });
 
 };

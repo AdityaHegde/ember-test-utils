@@ -7,7 +7,7 @@ define([
 /**
  * A simple test case suit class.
  *
- * @class TestSuit
+ * @class EmberTests.TestCase.TestSuit
  */
 var TestSuit = Ember.Object.extend({
   init : function() {

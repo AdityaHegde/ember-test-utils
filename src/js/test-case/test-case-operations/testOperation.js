@@ -6,7 +6,8 @@ define([
 /**
  * Test Opertaion base class.
  *
- * @class TestOperation
+ * @class EmberTests.TestCase.TestOperation
+ * @submodule test-case-operation
  */
 var TestOperation = Ember.Object.extend({
   run : function(testData) {

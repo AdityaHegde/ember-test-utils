@@ -7,7 +7,8 @@ define([
 /**
  * Test suit which call moduleFor* module initializer provided by ember-qunit.
  *
- * @class EmberTestSuit
+ * @class EmberTests.TestCase.EmberTestSuit
+ * @extends EmberTests.TestCase.TestSuit
  */
 var EmberTestSuit = TestSuit.TestSuit.extend({
   /**

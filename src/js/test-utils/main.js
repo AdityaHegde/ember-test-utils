@@ -13,10 +13,10 @@ define([
   "./setupAppForTesting",
 ], function() {
   /**
-   * @class TestUtils
+   * @class EmberTests.TestUtils
    */
   var TestUtils = Ember.Namespace.create();
-  window.TestUtils = TestUtils;
+  //window.TestUtils = TestUtils;
 
   //start after DS
   for(var i = 0; i < arguments.length; i++) {

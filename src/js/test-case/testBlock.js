@@ -1,15 +1,16 @@
 define([
   "ember",
   "lib/ember-utils-core",
-], function(Ember) {
+  "../test-utils/main",
+], function(Ember, Utils, TestUtils) {
 
 /**
  * Test Case Block. A block of operations run synchronously. They are preeceded by a wait() and enclosed in andThen().
  *
- * @class TestBlock
+ * @class EmberTests.TestCase.TestBlock
  */
 var TestBlock = Ember.Object.extend({
-  testOperations : Utils.hasManyWithHierarchy("TestCase.TestHierarchyMap", 2, "type"),
+  testOperations : Utils.hasManyWithHierarchy("EmberTests.TestCase.TestHierarchyMap", 2, "type"),
 
   run : function(testData) {
     var block = this;

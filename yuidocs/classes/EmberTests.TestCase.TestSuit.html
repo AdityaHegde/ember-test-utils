@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TestValueAssignObject - Ember Test Utils</title>
+    <title>EmberTests.TestCase.TestSuit - Ember Test Utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -41,33 +41,33 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/EmberTestSuit.html">EmberTestSuit</a></li>
+                <li><a href="../classes/EmberTests.MockjaxUtilsMockjaxData.html">EmberTests.MockjaxUtilsMockjaxData</a></li>
             
-                <li><a href="../classes/MockjaxData.html">MockjaxData</a></li>
+                <li><a href="../classes/EmberTests.MockjaxUtilsMockjaxSettings.html">EmberTests.MockjaxUtilsMockjaxSettings</a></li>
             
-                <li><a href="../classes/MockjaxSettings.html">MockjaxSettings</a></li>
+                <li><a href="../classes/EmberTests.TestCase.AsyncOperation.html">EmberTests.TestCase.AsyncOperation</a></li>
             
-                <li><a href="../classes/SetupStore.html">SetupStore</a></li>
+                <li><a href="../classes/EmberTests.TestCase.EmberTestSuit.html">EmberTests.TestCase.EmberTestSuit</a></li>
             
-                <li><a href="../classes/TestAssignValues.html">TestAssignValues</a></li>
+                <li><a href="../classes/EmberTests.TestCase.SetupStore.html">EmberTests.TestCase.SetupStore</a></li>
             
-                <li><a href="../classes/TestBlock.html">TestBlock</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestAssignValueObject.html">EmberTests.TestCase.TestAssignValueObject</a></li>
             
-                <li><a href="../classes/TestCase.html">TestCase</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestAssignValues.html">EmberTests.TestCase.TestAssignValues</a></li>
             
-                <li><a href="../classes/TestOperation.html">TestOperation</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestBlock.html">EmberTests.TestCase.TestBlock</a></li>
             
-                <li><a href="../classes/TestSuit.html">TestSuit</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestCase.html">EmberTests.TestCase.TestCase</a></li>
             
-                <li><a href="../classes/TestUtils.html">TestUtils</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestOperation.html">EmberTests.TestCase.TestOperation</a></li>
             
-                <li><a href="../classes/TestValueAssignObject.html">TestValueAssignObject</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestSuit.html">EmberTests.TestCase.TestSuit</a></li>
             
-                <li><a href="../classes/TestValueCheckObject.html">TestValueCheckObject</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestValueCheckObject.html">EmberTests.TestCase.TestValueCheckObject</a></li>
             
-                <li><a href="../classes/TestValuesCheck.html">TestValuesCheck</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestValuesCheck.html">EmberTests.TestCase.TestValuesCheck</a></li>
             
-                <li><a href="../classes/var AsyncOperation.html">var AsyncOperation</a></li>
+                <li><a href="../classes/EmberTests.TestUtils.html">EmberTests.TestUtils</a></li>
             
             </ul>
 
@@ -116,7 +116,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>TestValueAssignObject Class</h1>
+                        <h1>EmberTests.TestCase.TestSuit Class</h1>
 <div class="box meta">
     
 
@@ -124,7 +124,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_js_test-case_test-case-operations_testValueAssignObject.js.html#l8"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueAssignObject.js:8</code></a>
+            Defined in: <a href="../files/src_js_test-case_testSuit.js.html#l7"><code>src&#x2F;js&#x2F;test-case&#x2F;testSuit.js:7</code></a>
         </div>
     
 
@@ -140,7 +140,7 @@
 
 
 <div class="box intro">
-    <p>Object that has config for checking a value.</p>
+    <p>A simple test case suit class.</p>
 
 </div>
 
@@ -171,35 +171,21 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_params">params</a>
+                                <a href="#property_moduleOpts">moduleOpts</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_path">path</a>
+                                <a href="#property_suitName">suitName</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_putPath">putPath</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_value">value</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_value">value</a>
+                                <a href="#property_testCases">testCases</a>
 
                                 
                                 
@@ -221,8 +207,98 @@
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_params" class="property item">
-    <h3 class="name"><code>params</code></h3>
+                    <div id="property_moduleOpts" class="property item">
+    <h3 class="name"><code>moduleOpts</code></h3>
+    <span class="type">Object</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-case_testSuit.js.html#l32"><code>src&#x2F;js&#x2F;test-case&#x2F;testSuit.js:32</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Options to be passed to the qunit module.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_suitName" class="property item">
+    <h3 class="name"><code>suitName</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_js_test-case_testSuit.js.html#l24"><code>src&#x2F;js&#x2F;test-case&#x2F;testSuit.js:24</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Name of the test suit.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_testCases" class="property item">
+    <h3 class="name"><code>testCases</code></h3>
     <span class="type">Array</span>
 
     
@@ -244,7 +320,7 @@
             
         
         
-        <a href="../files/src_js_test-case_test-case-operations_testValueAssignObject.js.html#l46"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueAssignObject.js:46</code></a>
+        <a href="../files/src_js_test-case_testSuit.js.html#l40"><code>src&#x2F;js&#x2F;test-case&#x2F;testSuit.js:40</code></a>
         
         </p>
 
@@ -254,188 +330,7 @@
     </div>
 
     <div class="description">
-        <p>Param used in various operations. 
-For array operations, 0th element is operation, 1st element is additional param to operation.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_path" class="property item">
-    <h3 class="name"><code>path</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_js_test-case_test-case-operations_testValueAssignObject.js.html#l14"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueAssignObject.js:14</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Path of the value to assign to. Can have indices also!</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_putPath" class="property item">
-    <h3 class="name"><code>putPath</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_js_test-case_test-case-operations_testValueAssignObject.js.html#l22"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueAssignObject.js:22</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Path within value gotten by path to assign to.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_value" class="property item">
-    <h3 class="name"><code>value</code></h3>
-    <span class="type">Number | Boolean | String | Object</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_js_test-case_test-case-operations_testValueAssignObject.js.html#l30"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueAssignObject.js:30</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Value to assign.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_value" class="property item">
-    <h3 class="name"><code>value</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_js_test-case_test-case-operations_testValueAssignObject.js.html#l38"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;testValueAssignObject.js:38</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Path to get value from.</p>
+        <p>Array of test cases. Will be automatically be converted to TestCase classes based on &quot;testCase&quot; attribute.</p>
 
     </div>
 

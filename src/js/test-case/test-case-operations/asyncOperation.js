@@ -3,7 +3,7 @@ define([
   "./testOperation",
   "lib/ember-utils-core",
   "../../test-utils/main",
-], function(Ember, TestOperation) {
+], function(Ember, TestOperation, Utils, TestUtils) {
 
 Ember.Test.registerAsyncHelper("asyncOprnWrapper", function(app, context, callback, testData) {
   return callback.call(context, testData);
@@ -11,7 +11,10 @@ Ember.Test.registerAsyncHelper("asyncOprnWrapper", function(app, context, callba
 /**
  * Test Operation base class for async operations. Override asyncRun.
  *
- * @class var AsyncOperation
+ * @class EmberTests.TestCase.AsyncOperation
+ * @extends EmberTests.TestCase.TestOperation
+ * @module test-case
+ * @submodule test-case-operation
  */
 var AsyncOperation = TestOperation.TestOperation.extend({
   run : function(testData) {

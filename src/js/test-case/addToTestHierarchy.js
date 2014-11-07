@@ -17,7 +17,7 @@ var typeToLevel = {
 /*
  * Add a class to the test hierarchy.
  *
- * @method addToTestHierarchy
+ * @method EmberTests.TestCase.addToTestHierarchy
  * @param {String} key Key to use in the classes map in the hierarchy.
  * @param {Class} classObj Class object to be added to hierarchy.
  * @param {String} type Type of object. Used in determining level to add to. Can be testCase/tc/testBlock/tb/testOperation/to.

@@ -3,8 +3,9 @@ define([
   "ember_qunit",
 ], function(Ember, emq) {
 
+  var App;
   Ember.run(function() {
-    App = Ember.Application.create({
+    window.App = App = Ember.Application.create({
       rootElement : "#ember-testing",
     });
 

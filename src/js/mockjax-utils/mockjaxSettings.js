@@ -6,7 +6,7 @@ define([
 /**
  * Mockjax settings class.
  *
- * @class MockjaxSettings
+ * @class EmberTests.MockjaxUtilsMockjaxSettings
  */
 var MockjaxSettings = Ember.Object.extend({
   init : function() {

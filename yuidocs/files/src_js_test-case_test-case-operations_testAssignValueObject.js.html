@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SetupStore - Ember Test Utils</title>
+    <title>src/js/test-case/test-case-operations/testAssignValueObject.js - Ember Test Utils</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -41,33 +41,33 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/EmberTestSuit.html">EmberTestSuit</a></li>
+                <li><a href="../classes/EmberTests.MockjaxUtilsMockjaxData.html">EmberTests.MockjaxUtilsMockjaxData</a></li>
             
-                <li><a href="../classes/MockjaxData.html">MockjaxData</a></li>
+                <li><a href="../classes/EmberTests.MockjaxUtilsMockjaxSettings.html">EmberTests.MockjaxUtilsMockjaxSettings</a></li>
             
-                <li><a href="../classes/MockjaxSettings.html">MockjaxSettings</a></li>
+                <li><a href="../classes/EmberTests.TestCase.AsyncOperation.html">EmberTests.TestCase.AsyncOperation</a></li>
             
-                <li><a href="../classes/SetupStore.html">SetupStore</a></li>
+                <li><a href="../classes/EmberTests.TestCase.EmberTestSuit.html">EmberTests.TestCase.EmberTestSuit</a></li>
             
-                <li><a href="../classes/TestAssignValues.html">TestAssignValues</a></li>
+                <li><a href="../classes/EmberTests.TestCase.SetupStore.html">EmberTests.TestCase.SetupStore</a></li>
             
-                <li><a href="../classes/TestBlock.html">TestBlock</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestAssignValueObject.html">EmberTests.TestCase.TestAssignValueObject</a></li>
             
-                <li><a href="../classes/TestCase.html">TestCase</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestAssignValues.html">EmberTests.TestCase.TestAssignValues</a></li>
             
-                <li><a href="../classes/TestOperation.html">TestOperation</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestBlock.html">EmberTests.TestCase.TestBlock</a></li>
             
-                <li><a href="../classes/TestSuit.html">TestSuit</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestCase.html">EmberTests.TestCase.TestCase</a></li>
             
-                <li><a href="../classes/TestUtils.html">TestUtils</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestOperation.html">EmberTests.TestCase.TestOperation</a></li>
             
-                <li><a href="../classes/TestValueAssignObject.html">TestValueAssignObject</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestSuit.html">EmberTests.TestCase.TestSuit</a></li>
             
-                <li><a href="../classes/TestValueCheckObject.html">TestValueCheckObject</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestValueCheckObject.html">EmberTests.TestCase.TestValueCheckObject</a></li>
             
-                <li><a href="../classes/TestValuesCheck.html">TestValuesCheck</a></li>
+                <li><a href="../classes/EmberTests.TestCase.TestValuesCheck.html">EmberTests.TestCase.TestValuesCheck</a></li>
             
-                <li><a href="../classes/var AsyncOperation.html">var AsyncOperation</a></li>
+                <li><a href="../classes/EmberTests.TestUtils.html">EmberTests.TestUtils</a></li>
             
             </ul>
 
@@ -116,67 +116,73 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>SetupStore Class</h1>
-<div class="box meta">
-    
+                        <h1 class="file-heading">File: src/js/test-case/test-case-operations/testAssignValueObject.js</h1>
 
-    
-
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_js_test-case_test-case-operations_setupStore.js.html#l8"><code>src&#x2F;js&#x2F;test-case&#x2F;test-case-operations&#x2F;setupStore.js:8</code></a>
-        </div>
-    
-
-    
-        
-            Module: <a href="../modules/test-case.html">test-case</a>
-        
-    
-
-    
-</div>
+<div class="file">
+    <pre class="code prettyprint linenums">
+define([
+  &quot;ember&quot;,
+  &quot;lib/ember-utils-core&quot;,
+  &quot;../../test-utils/main&quot;,
+], function(Ember) {
 
 
+/**
+ * Object that has config for checking a value.
+ *
+ * @class EmberTests.TestCase.TestAssignValueObject
+ * @submodule test-case-operation
+ */
+var TestAssignValueObject = Ember.Object.extend({
+  /**
+   * Path of the value to assign to. Can have indices also!
+   *
+   * @property path
+   * @type String
+   */
+  path : &quot;&quot;,
 
-<div class="box intro">
-    <p>Test Operation to setup ember data store.</p>
+  /**
+   * Path within value gotten by path to assign to.
+   *
+   * @property putPath
+   * @type String
+   */
+  putPath : &quot;&quot;,
 
-</div>
+  /**
+   * Value to assign.
+   *
+   * @property value
+   * @type Number|Boolean|String|Object
+   */
+  value : &quot;&quot;,
 
+  /**
+   * Path to get value from.
+   *
+   * @property value
+   * @type String
+   */
+  valuePath : null,
+  
+  /**
+   * Param used in various operations. 
+   * For array operations, 0th element is operation, 1st element is additional param to operation.
+   *
+   * @property params
+   * @type Array
+   */
+  param : [],
+});
 
+return {
+  TestAssignValueObject : TestAssignValueObject,
+};
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+});
 
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-
-        
-
-        
-
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

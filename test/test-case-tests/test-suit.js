@@ -1,8 +1,7 @@
 define([
   "ember",
-  "test-case/testSuit",
-  "test-case/emberTestSuit",
-], function(Ember, TestSuit, EmberTestSuit) {
+  "source/ember-test-utils",
+], function(Ember, EmberTests) {
 
 return function() {
 
@@ -15,7 +14,7 @@ test("Simple Test Suit", function() {
     returnedModuleOpts = moduleOpts;
   }
 
-  var testSuit = TestSuit.TestSuit.create({
+  var testSuit = EmberTests.TestCase.TestSuit.create({
     suitName : "Test",
     moduleOpts : {
       vara : "a",
@@ -38,7 +37,7 @@ test("Ember Module Test Suit", function() {
     returnedParam = param;
   }
 
-  var testSuit = EmberTestSuit.EmberTestSuit.create({
+  var testSuit = EmberTests.TestCase.EmberTestSuit.create({
     suitName : "Test",
     moduleOpts : {
       vara : "a",

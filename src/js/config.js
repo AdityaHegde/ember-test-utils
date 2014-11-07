@@ -1,5 +1,5 @@
 var require = {
-  baseUrl : "/js",
+  baseUrl : "/src/js",
   paths : {
     jquery         : "lib/jquery-2.1.1",
     jquery_mockjax : "lib/jquery.mockjax",

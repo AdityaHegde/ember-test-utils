@@ -8,7 +8,9 @@ define([
 /**
  * Test Operation to setup ember data store.
  *
- * @class SetupStore
+ * @class EmberTests.TestCase.SetupStore
+ * @extends EmberTests.TestCase.TestOperation
+ * @submodule test-case-operation
  */
 var SetupStore = TestOperation.TestOperation.extend({
   run : function(testData) {
