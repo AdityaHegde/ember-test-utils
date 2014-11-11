@@ -4,9 +4,9 @@
     define(['jquery', 'ember'], factory);
   } else {
     // Browser globals.
-    root.Utils = factory(root.$, root.Ember);
+    root.Utils = factory(root.$);
   }
-}(this, function($, Ember) {
+}(this, function($) {
 /**
  * @license almond 0.3.0 Copyright (c) 2011-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -715,10 +715,10 @@ define('objectWithArrayMixin',[
 var ObjectWithArrayMixin = Ember.Mixin.create({
   init : function() {
     this._super();
-    this.set("arrayProps", this.get("arrayProps") || []);
+    Ember.set(this, "arrayProps", this.get("arrayProps") || []);
     this.addArrayObserverToProp("arrayProps");
-    this.set("arrayProps.propKey", "arrayProps");
-    this.arrayPropsWasAdded(this.get("arrayProps"));
+    Ember.set(this, "arrayProps.propKey", "arrayProps");
+    this.arrayPropsWasAdded(this.get("arrayProps") || []);
   },
 
   addBeforeObserverToProp : function(propKey) {
@@ -907,7 +907,7 @@ var delayAddId = 0;
 var DelayedAddToHasManyMixin = Ember.Mixin.create(objectWithArrayMixin, {
   init : function() {
     this._super();
-    this.set("arrayPropDelayedObjs", {});
+    Ember.set(this, "arrayPropDelayedObjs", {});
   },
 
   arrayPropDelayedObjs : null,
@@ -1136,7 +1136,7 @@ var extractIdRegex = /:(ember\d+):?/;
  * @returns {String} Ember assigned id.
  */
 function getEmberId(obj) {
-  var str = obj.toString(), match = str.match(Utils.ExtractIdRegex);
+  var str = obj.toString(), match = str.match(extractIdRegex);
   return match && match[1];
 };
 
@@ -1183,6 +1183,7 @@ return {
   deepSearchArray : deepSearchArray,
   binaryInsert : binaryInsert,
   merge : merge,
+  hashHasKeys : hashHasKeys,
   getArrayFromRange : getArrayFromRange,
   getEmberId : getEmberId,
   getOffset : getOffset,
@@ -1194,7 +1195,7 @@ return {
 /**
  * @module ember-utils-core
  */
-define('ember_utils_core',[
+define('ember-utils-core',[
   "./hasMany",
   "./belongsTo",
   "./hierarchy",
@@ -1234,5 +1235,5 @@ define('ember_utils_core',[
  
   // Use almond's special top level synchronous require to trigger factory
   // functions, get the final module, and export it as the public api.
-  return require('ember_utils_core');
+  return require('ember-utils-core');
 }));

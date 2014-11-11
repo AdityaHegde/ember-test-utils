@@ -9,14 +9,14 @@ define([
     QUnit.config.reorder = false;
     QUnit.config.autostart = false;
     //workaroud for qunit not reporting toatal tests
-    var testCount = 0;
+    /*var testCount = 0;
     var qunitTest = QUnit.test;
     QUnit.test = window.test = function () {
       testCount += 1;
       qunitTest.apply(this, arguments);
-    };
+    };*/
     QUnit.begin(function (args) {
-      args.totalTests = testCount;
+      //args.totalTests = testCount;
       TestUtils.equal = equal;
       TestUtils.ok = ok;
       TestUtils.wait = wait;

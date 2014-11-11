@@ -11,20 +11,19 @@ module.exports = {
       removeCombined : true,
       optimize : "none",
       wrap : {
-        startFile: "wrap/start.frag",
+        startFile: ["wrap/start.frag", "wrap/almond.js"],
         endFile: "wrap/end.frag"
       },
 
       modules : [
         {
           name : "ember-test-utils",
-          include : ["lib/almond.js"],
           exclude : [
             "jquery",
             "jquery_mockjax",
             "handlebars",
             "ember",
-            "lib/ember-utils-core",
+            //"lib/ember-utils-core",
           ],
         }
       ],
