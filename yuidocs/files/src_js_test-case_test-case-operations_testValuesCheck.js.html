@@ -148,7 +148,12 @@ var TestValuesCheck = TestOperation.TestOperation.extend({
           message = values[i].get(&quot;message&quot;),
           getValue = TestUtils.getter(testData, path);
       if(Ember.typeOf(value) === &quot;object&quot;) {
-        TestUtils.ok(TestUtils.deepCheck(getValue[0], value), message);
+        if(Ember.typeOf(getValue[0]) === &quot;instance&quot;) {
+          TestUtils.ok(TestUtils.deepCheck(getValue[0], value), message);
+        }
+        else {
+          TestUtils.deepEqual(getValue[0], value, message);
+        }
       }
       else if(Ember.typeOf(value) === &quot;array&quot;) {
         TestUtils.ok(TestUtils.checkElements(getValue[1], getValue[2], value), message);
