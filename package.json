@@ -21,9 +21,6 @@
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   },
-  "dependencies": {
-    "express": "~3.4.4"
-  },
   "devDependencies": {
     "requirejs": "*",
     "grunt": "*",
@@ -35,6 +32,7 @@
     "grunt-concurrent": "*",
     "grunt-qunit-istanbul": "*",
     "grunt-contrib-clean": "*",
+    "grunt-coveralls": "*",
     "load-grunt-config": "*",
     "time-grunt": "*",
     "yuidocjs": "*",
@@ -42,7 +40,7 @@
   },
   "bundleDependencies": [],
   "scripts" : {
-    "test" : "./node_modules/karma/bin/karma start karma.conf.js",
+    "test" : "./node_modules/.bin/grunt",
     "start" : "node server.js"
   }
 }

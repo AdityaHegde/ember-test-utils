@@ -5,3 +5,4 @@ default:
   - 'concat'
   - 'uglify'
   - 'clean'
+  - 'coveralls'
